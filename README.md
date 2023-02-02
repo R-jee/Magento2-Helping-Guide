@@ -210,7 +210,7 @@
 				***  END FOR Apache2  *** <--- ( IS not verified )
 		--8 Install Magento2
 			- cd /var/www/html/magento/
-			php bin/magento setup:install --base-url=http://magento2.local/ --db-host=localhost --db-name=magento2db --db-user=magento2user --db-password=admin@123 --admin-firstname=Magento --admin-lastname=User --admin-email=admin@mystore.com --admin-user=admin --admin-password=admin@123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1 --backend-frontname="admin" --search-engine=elasticsearch7 --elasticsearch-host=localhost --elasticsearch-port=9200
+			sudo php bin/magento setup:install --base-url=http://magento.local.com --db-host=localhost --db-name=magento --db-user=magento2user --db-password=admin@123 --admin-firstname=Magento --admin-lastname=User --admin-email=admin@mystore.com --admin-user=admin --admin-password=admin@123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1 --backend-frontname="admin" --search-engine=elasticsearch7 --elasticsearch-host=localhost --elasticsearch-port=9200
 			
 			- sudo php bin/magento setup:upgrade
 			- sudo php bin/magento setup:di:compile
