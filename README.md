@@ -1,5 +1,5 @@
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-# Magento Helping Guide
+#	Magento Helping Guide
 ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
 
 ##	1): sudo apt-get update
@@ -129,11 +129,11 @@
 			- https://marketplace.magento.com/customer/accessKeys/
 		--3 cd /var/www/html
 		--4 composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition <install-directory-name>
-			- composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento2.local
+			- composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento
 		--5 Set file permissions:
 			- sudo chown -R $USER:$USER /var/www/html
 			- sudo chown -R :www-data /var/www/html/
-			- sudo chmod -R 755 /var/www/html/magento2.local/
+			- sudo chmod -R 755 /var/www/html/magento/
 			
 		--6 Setup MySQL Database
 			- sudo apt update
@@ -149,8 +149,8 @@
 			- cd /etc/nginx/sites-enabled/
 			- cd /etc/nginx/sites-available/
 			- sudo systemctl status nginx status
-			- sudo nano magento2.local
-			- 	upstream fastcgi_backend_magento2 {
+			- sudo nano /etc/nginx/sites-available/magento.local.com
+				upstream fastcgi_backend {
 					server unix:/run/php/php8.1-fpm.sock;
 				}
 				server {
@@ -159,37 +159,34 @@
 					set $MAGE_ROOT /var/www/html/magento;
 					set $MAGE_MODE developer;
 					#set $MAGE_RUN_TYPE store;
-					include /var/www/html/magento/nginx.conf.sample;
-				}
-			- sudo systemctl status nginx status
-			- sudo cp /etc/nginx/sites-available/magento.local /etc/nginx/sites-available/magento.local
-			- sudo nano /etc/nginx/sites-available/magento
-				upstream fastcgi_backend_mg {
-					server unix:/run/php/php8.1-fpm.sock;
-				}
-				server {
-					listen 80;
-					server_name magento.local.com;
-					set $MAGE_ROOT /var/www/html/magento.local;
-					set $MAGE_MODE developer;
-					#set $MAGE_RUN_TYPE store;
 					include /var/www/html/magento.local/nginx.conf.sample;
 				}
-			- sudo ln -s /etc/nginx/sites-available/magento.local /etc/nginx/sites-enabled/
-						OR
-				sudo ln -s /ect/nginx/sites-available/magento.local.com /etc/nginx/sites-enabled/
+			- sudo ln -s /etc/nginx/sites-available/magento.local.com /etc/nginx/sites-enabled/		
 
-					
+			- sudo nano etc/hosts
+				~ add  ( 172.0.0.1	magento.local.com )  -> save
+				~ sudo nginx -t
+				~ sudo systemctl restart nginx.service
+			- Give permission :: 
+				~ cd /var/www/html/magento
+				~ ll
+				~ sudo chmod -R 777 var/ pub/ generated/ app/etc/
+				~ test by ---> http://magento.local.com
+				~ if error 
+					--- sudo rm -rf /etc/nginx/sites-enabled/magento.local.com
+					--- sudo ln -s /etc/nginx/sites-available/magento.local.com /etc/nginx/sites-enabled/
+					--- sudo service nginx restart
+				
 			- sudo nano /etc/nginx/nginx.conf
 			- sudo nano /var/www/html/magento.local/nginx.conf.sample;
 			- sudo systemctl restart nginx.service
-			- sudo nano magento2.local
+			- sudo nano magento.local.com
 			- sudo nginx -t
 			- 	
 			
 				***  END FOR Nginx  ***
 				
-				***  START FOR Apache2  ***
+				***  START FOR Apache2  *** ---> ( IS not verified )
 			- sudo nano /etc/apache2/sites-available/magento2.conf
 			- <VirtualHost *:80>
 				ServerAdmin admin@domain.com
@@ -210,9 +207,9 @@
 			- sudo a2ensite magento2.conf
 			- sudo a2enmod rewrite
 			- sudo service apache2 restart
-				***  END FOR Apache2  ***
+				***  END FOR Apache2  *** <--- ( IS not verified )
 		--8 Install Magento2
-			- cd /var/www/html/magento2.local/
+			- cd /var/www/html/magento/
 			php bin/magento setup:install --base-url=http://magento2.local/ --db-host=localhost --db-name=magento2db --db-user=magento2user --db-password=admin@123 --admin-firstname=Magento --admin-lastname=User --admin-email=admin@mystore.com --admin-user=admin --admin-password=admin@123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1 --backend-frontname="admin" --search-engine=elasticsearch7 --elasticsearch-host=localhost --elasticsearch-port=9200
 			
 			- sudo php bin/magento setup:upgrade
