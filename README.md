@@ -1,6 +1,4 @@
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
-#	Magento Helping Guide
-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+>#	Magento Helping Guide
 
 ##	1): sudo apt-get update
 		-- Check Version of required setup before Installation
@@ -135,12 +133,13 @@
 			- sudo chown -R :www-data /var/www/html/
 			- sudo chmod -R 755 /var/www/html/magento/
 			
+			
 		--6 Setup MySQL Database
 			- sudo apt update
 			- sudo mysql -u root -p
 				~ CREATE DATABASE magento2db;
 				~ CREATE USER 'magento2user'@'localhost' IDENTIFIED BY 'admin@123';
-				~ GRANT ALL ON magento2db.* TO 'magento2user'@'localhost' IDENTIFIED BY 'admin@123' WITH GRANT OPTION;
+				~ GRANT ALL ON magento2db.* TO 'root'@'localhost' IDENTIFIED BY 'admin@123' WITH GRANT OPTION;
 				~ FLUSH PRIVILEGES;
 				~ exit;
 				
@@ -159,7 +158,7 @@
 					set $MAGE_ROOT /var/www/html/magento;
 					set $MAGE_MODE developer;
 					#set $MAGE_RUN_TYPE store;
-					include /var/www/html/magento.local/nginx.conf.sample;
+					include /var/www/html/magento/nginx.conf.sample;
 				}
 			- sudo ln -s /etc/nginx/sites-available/magento.local.com /etc/nginx/sites-enabled/		
 
@@ -172,7 +171,7 @@
 				~ ll
 				~ sudo chmod -R 777 var/ pub/ generated/ app/etc/
 				~ test by ---> http://magento.local.com
-				~ if error 
+				~ if error  or for refresh file
 					--- sudo rm -rf /etc/nginx/sites-enabled/magento.local.com
 					--- sudo ln -s /etc/nginx/sites-available/magento.local.com /etc/nginx/sites-enabled/
 					--- sudo service nginx restart
@@ -210,7 +209,7 @@
 				***  END FOR Apache2  *** <--- ( IS not verified )
 		--8 Install Magento2
 			- cd /var/www/html/magento/
-			sudo php bin/magento setup:install --base-url=http://magento.local.com --db-host=localhost --db-name=magento --db-user=magento2user --db-password=admin@123 --admin-firstname=Magento --admin-lastname=User --admin-email=admin@mystore.com --admin-user=admin --admin-password=admin@123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1 --backend-frontname="admin" --search-engine=elasticsearch7 --elasticsearch-host=localhost --elasticsearch-port=9200
+			sudo php bin/magento setup:install --base-url=http://magento.local.com --db-host=localhost --db-name=magento --db-user=magento2user --db-password=admin@123 --admin-firstname=Magento --admin-lastname=User --admin-email=admin@mystore.com --admin-user=admin --admin-password=admin@123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1 --backend-frontname="admin" --search-engine=ticsearch7 --elasticsearch-host=localhost --elasticsearch-port=9200
 			
 			- sudo chmod -R 755 /var/www/html/magento
 			- sudo php bin/magento setup:upgrade
@@ -238,7 +237,44 @@
 			- sudo php bin/magento cache:flush
 
 
-##	0): Initial Server Setup with Ubuntu 20.04
+##	 0): Use Certbot to Enable HTTPS with NGINX on Ubuntu
+		-- Configuring Firewall Rules with UFW
+			- If UFW is not installed, install it now using apt or apt-get
+				~ sudo apt update
+				~ sudo apt install ufw
+			- Add firewall rules to allow ssh (port 22) connections as well as http (port 80) and https (port 443) traffic.
+				~ sudo ufw allow ssh
+				~ sudo ufw allow http
+				~ sudo ufw allow https
+			- Enable UFW if its not already enabled.
+				~ sudo ufw enable
+				~ sudo ufw status
+		-- Installing Snapd
+			- Installing Snapd
+				~ sudo apt update
+				~ sudo apt install snapd
+			- Install the core snap.
+				~ sudo snap install core
+				~ sudo snap refresh core
+		-- Installing Certbot
+			- Remove any previously installed certbot packages to avoid conflicts with the new Snap package.
+				~ sudo apt remove certbot
+			- sudo apt remove certbot
+				~ sudo snap install --classic certbot
+			- Configure a symbolic link to the Certbot directory using the ln command.
+				~ sudo ln -s /snap/bin/certbot /usr/bin/certbot
+		-- Requesting a TLS/SSL Certificate Using Certbot
+			- Request a certfifcate and automatically configure it on NGINX (recommended):
+				~ sudo certbot --nginx
+		-- Renewing a TLS/SSL Certificate Using Certbot
+			- Test Automated Renewals
+				~ sudo certbot renew --dry-run
+				~ Manually Renew Certificate
+			- Manually Renew Certificate
+				~ Manually Renew Certificate
+		
+
+##	00): Initial Server Setup with Ubuntu 20.04
 		-- sudo apt update
 		-- curl -4 icanhazip.com  --> { your_server_ip }
 		-- ssh root@your_server_ip
