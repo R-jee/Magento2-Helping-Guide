@@ -6,6 +6,9 @@
 			- PHP: php -v
 			- MySQL: mysql -V OR mysql -v
 			- Elasticsearch: curl -XGET 'http://localhost:9200'
+			- swapon -p 0 /dev/sdc1
+			- swapoff -a
+			- swapon -a
 			
 ##	2): sudo apt update
 ##	3): sudo install composer
@@ -120,7 +123,10 @@
 				disable -->	sudo systemctl disable elasticsearch
 				startup -->	sudo systemctl enable elasticsearch
 		-- Step 3 — Securing Elasticsearch
-			-
+			- 
+		-- Step 4 Error in ElasticSearch Solved by
+			- sudo apt-get --purge autoremove elasticsearch
+			
 ##	8): Install Magento 2
 		--1 sudo apt update
 		--2 Get Magento marketplace accesskey  
@@ -209,7 +215,7 @@
 				***  END FOR Apache2  *** <--- ( IS not verified )
 		--8 Install Magento2
 			- cd /var/www/html/magento/
-			sudo php bin/magento setup:install --base-url=http://magento.local.com --db-host=localhost --db-name=magento --db-user=magento2user --db-password=admin@123 --admin-firstname=Magento --admin-lastname=User --admin-email=admin@mystore.com --admin-user=admin --admin-password=admin@123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1 --backend-frontname="admin" --search-engine=ticsearch7 --elasticsearch-host=localhost --elasticsearch-port=9200
+			sudo php bin/magento setup:install --base-url=http://magento.local.com --db-host=localhost --db-name=magento --db-user=magento2user --db-password=admin@123 --admin-firstname=Magento --admin-lastname=User --admin-email=admin@mystore.com --admin-user=admin --admin-password=admin@123 --language=en_US --currency=USD --timezone=America/Chicago --use-rewrites=1 --backend-frontname="admin" --search-engine=elasticsearch7 --elasticsearch-host=localhost --elasticsearch-port=9200
 			
 			- sudo chmod -R 755 /var/www/html/magento
 			- sudo php bin/magento setup:upgrade
@@ -236,6 +242,8 @@
 			- sudo php bin/magento deploy:mode:set developer
 			- sudo php bin/magento cache:flush
 
+##	***): sudo: /etc/sudoers is owned by uid 1000, should be 0
+		-- pkexec chown root:root /etc/sudoers /etc/sudoers.d -R
 
 ##	 0): Use Certbot to Enable HTTPS with NGINX on Ubuntu
 		-- Configuring Firewall Rules with UFW
