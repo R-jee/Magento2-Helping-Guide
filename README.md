@@ -9,6 +9,18 @@
 		-- then restart elasticsearch
 		-- sudo service elasticsearch restart
 
+## Give permission :: 
+		-- cd /var/www/html/magento
+		-- ll
+		-- sudo chmod -R 777 var/ pub/ generated/ app/etc/  --->                  ( if server url is not working and loading site then run this command )
+		-- test by ---> http://magento.local.com
+		-- if error  or for refresh file
+			- sudo chmod -R 777 var/ pub/ generated/ app/etc/  --> in '/var/www/html/magento' folder or select your magento folder pointed
+			- sudo rm -rf /etc/nginx/sites-enabled/magento.local.com
+			- sudo ln -s /etc/nginx/sites-available/magento.local.com /etc/nginx/sites-enabled/
+			- sudo service nginx restart
+			- sudo systemctl restart nginx.service
+
 ##	1): sudo apt-get update
 		-- Check Version of required setup before Installation
 			- Composer: composer or composer --version
@@ -143,6 +155,8 @@
 		--3 cd /var/www/html
 		--4 composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition <install-directory-name>
 			- composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento
+			- composer create-project --repository-url=https://repo.magento.com/ magento/project-enterprise-edition magento
+			- composer create-project --repository-url=https://repo.magento.com/ magento/project-enterprise-edition=2.3.2-p1 luma
 		--5 Set file permissions:
 			- sudo chown -R $USER:$USER /var/www/html
 			- sudo chown -R :www-data /var/www/html/
@@ -184,12 +198,14 @@
 			- Give permission :: 
 				~ cd /var/www/html/magento
 				~ ll
-				~ sudo chmod -R 777 var/ pub/ generated/ app/etc/  --->   ( if server url is not working and loading site then run this command )
+				~ sudo chmod -R 777 var/ pub/ generated/ app/etc/  --->                  ( if server url is not working and loading site then run this command )
 				~ test by ---> http://magento.local.com
-				~ if error  or for refresh file
+				~ #if error  or for refresh file
+					--- sudo chmod -R 777 var/ pub/ generated/ app/etc/  --> in '/var/www/html/magento' folder or select your magento folder pointed
 					--- sudo rm -rf /etc/nginx/sites-enabled/magento.local.com
 					--- sudo ln -s /etc/nginx/sites-available/magento.local.com /etc/nginx/sites-enabled/
 					--- sudo service nginx restart
+					--- sudo systemctl restart nginx.service
 				
 			- sudo nano /etc/nginx/nginx.conf
 			- sudo nano /var/www/html/magento.local/nginx.conf.sample;
@@ -234,6 +250,7 @@
 			- sudo php bin/magento cache:clean
 			- sudo php bin/magento cache:flush
 			- sudo chmod -R 777 pub/ var/ generated/
+			- sudo chmod -R 777 var/ pub/ generated/ app/etc/
 			
 		--9 Frontend URL:
 			- http://magento2.local/
@@ -252,7 +269,6 @@
 			- sudo php bin/magento cache:flush
 
 ##	***): sudo: /etc/sudoers is owned by uid 1000, should be 0
-		-- pkexec chown root:root /etc/sudoers /etc/sudoers.d -R
 		-- pkexec chown root:root /etc/sudoers /etc/sudoers.d -R
 					OR 
 		-- sudo chown myuser:myuser /etc/sudoers 
