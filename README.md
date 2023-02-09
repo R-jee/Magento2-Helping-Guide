@@ -175,7 +175,7 @@
 			- Give permission :: 
 				~ cd /var/www/html/magento
 				~ ll
-				~ sudo chmod -R 777 var/ pub/ generated/ app/etc/
+				~ sudo chmod -R 777 var/ pub/ generated/ app/etc/  --->   ( if server url is not working and loading site then run this command )
 				~ test by ---> http://magento.local.com
 				~ if error  or for refresh file
 					--- sudo rm -rf /etc/nginx/sites-enabled/magento.local.com
