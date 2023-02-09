@@ -1,5 +1,14 @@
 >#	Magento Helping Guide
 
+##	Tip-point): if system hangs much often then do this
+		-- go to etc folder
+		-- /etc/elasticsearch/
+		-- open "jvm.options" file then
+		-- find  -->  ## IMPORTANT: JVM heap size
+		-- in there replace ## -Xms4G ## -Xmx4G  to  -Xms100m -Xmx4G with nextline tab seprated.
+		-- then restart elasticsearch
+		-- sudo service elasticsearch restart
+
 ##	1): sudo apt-get update
 		-- Check Version of required setup before Installation
 			- Composer: composer or composer --version
