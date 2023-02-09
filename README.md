@@ -253,6 +253,13 @@
 
 ##	***): sudo: /etc/sudoers is owned by uid 1000, should be 0
 		-- pkexec chown root:root /etc/sudoers /etc/sudoers.d -R
+		-- pkexec chown root:root /etc/sudoers /etc/sudoers.d -R
+					OR 
+		-- sudo chown myuser:myuser /etc/sudoers 
+		-- chmod u+w /etc/sudoers
+		-- chmod u-w /etc/sudoers
+		-- sudo chown root:root /etc/sudoers 
+
 
 ##	 0): Use Certbot to Enable HTTPS with NGINX on Ubuntu
 		-- Configuring Firewall Rules with UFW
