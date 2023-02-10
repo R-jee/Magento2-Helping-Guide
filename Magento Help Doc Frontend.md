@@ -23,7 +23,17 @@
     _2. filtering_
     _3. arrage , add & remove data cells_
     _4. save as view_
---
+
+#### Magento Architecture
+  ##### 1. Application Scopes
+  - global <br/>
+    _1. application wide scopes_ e.g: state/country options.
+  - website <br/>
+    _1. store wide scopes_ e.g: specific store access to user Role.<br/>
+    _2. store-view wide scopes_ e.g: specific store-view access to user Role.
+  ##### 2. Website, Store, Store-view
+  ##### 3. Cache & Index management
+
 
 
 >##  Chapter # 2 ( Type of Catagory Handle & User Role 7 Scopes )
