@@ -17,7 +17,7 @@
   
 #### Grid Types
   - Fixed <br/>
-    _1. Onlu filtering allowed_
+    _1. Only filtering allowed_
   - Customizable <br/>
     _1. Drag & drop table columns_
     _2. filtering_
