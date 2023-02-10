@@ -17,12 +17,12 @@
   
 #### Grid Types
   - Fixed
-    _-- Onlu filtering allowed
+    _1. Onlu filtering allowed_
   - Customizable
-    _-- Drag & drop table columns
-    _-- filtering
-    _-- arrage , add & remove data cells
-    _-- save as view
+    _1. Drag & drop table columns_
+    _2. filtering_
+    _3. arrage , add & remove data cells_
+    _4. save as view_
 
 
 >##  Chapter # 2 ( Type of Catagory Handle & User Role 7 Scopes )
