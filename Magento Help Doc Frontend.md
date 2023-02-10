@@ -16,9 +16,9 @@
   - Backups manage
   
 #### Grid Types
-  - Fixed <br/><br/>
+  - Fixed <br/>
     _1. Onlu filtering allowed_
-  - Customizable <br/><br/>
+  - Customizable <br/>
     _1. Drag & drop table columns_
     _2. filtering_
     _3. arrage , add & remove data cells_
