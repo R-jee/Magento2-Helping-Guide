@@ -23,6 +23,7 @@
     _2. filtering_
     _3. arrage , add & remove data cells_
     _4. save as view_
+--
 
 
 >##  Chapter # 2 ( Type of Catagory Handle & User Role 7 Scopes )
