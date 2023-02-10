@@ -32,7 +32,20 @@
     _1. store wide scopes_ e.g: specific store access to user Role.<br/>
     _2. store-view wide scopes_ e.g: specific store-view access to user Role.
   ##### 2. Website, Store, Store-view
+  - website Scope
+    _1. scope on whole website level_
+  - Store Scope
+    _1. scope on store level_
+  - Store-view Scope
+    _1. scope on store-view level_ e.g: showing calalog view on website
   ##### 3. Cache & Index management
+  - Cache Managment
+    _1. store response_
+    _2. store precompile response_
+  - Index Management
+    _1. it controls the cached files indexing & preprocess files/routes_
+    
+####
 
 
 
