@@ -49,6 +49,11 @@
 		-- sudo apt install php8.1-{gd,zip,mysql,oauth,yaml,fpm,mbstring,memcache,dom,xml,bcmath,ctype,curl,iconv,intl,soap,xsl,sockets}
 		-- change php version 
 			- https://hostadvice.com/how-to/how-to-switch-between-php-versions-on-an-ubuntu-22-04-vps-or-dedicated-server/#:~:text=By%20default%2C%20Ubuntu%20will%20set%20the%20latest%2C%20stable,%24%20sudo%20a2dismod%20php8.1%20%24%20sudo%20a2enmod%20php7.2	
+			- sudo apt upgrade
+			- sudo apt install software-properties-common apt-transport-https
+			- sudo add-apt-repository ppa:ondrej/php
+			- sudo apt update
+			- sudo apt install php8.1 libapache2-mod-php8.1
 		
 		
 ##	5): sudo install mysql 5.6, 5.7
