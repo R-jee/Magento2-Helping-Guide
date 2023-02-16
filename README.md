@@ -59,6 +59,11 @@
 		
 		
 ##	5): sudo install mysql 5.6, 5.7
+		-- sudo systemctl disable mysql.service
+		-- sudo systemctl enable mysql.service
+		-- sudo systemctl restart mysql.service
+		-- sudo systemctl start mysql.service
+		
 		-- sudo apt update
 		-- sudo apt install mysql-server   
 		-- sudo systemctl start mysql.service
