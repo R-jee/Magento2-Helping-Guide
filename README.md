@@ -3,13 +3,20 @@
 ##	Remove Apache2 & install nginx + mariadb-server&client
 		-- apt-get update
 		-- apt-get upgrade
+		------------------------------
+		-- apt-get purge apache2
+		-- systemctl disable apache2
+		-- sudo apt-get remove apache2
+		------------------------------
 		-- apt install -y nginx
 		-- systemctl enable nginx
 		-- systemctl start nginx
+		------------------------------
 		-- apt-add-repository ppa:ondrej/php -y
 		-- systemctl enable php7.4-fpm
 		-- systemclt start php7.4-fpm
 		-- apt install -y php7.4 php7.4-{cli,gd,curl,mysql,ldap,zip,fileinfo,fpm,xml,mbstring,exif,pspell,imagick,bcmath}
+		------------------------------
 		-- apt install mariadb-server-10.6 mariadb-client-10.6
 		-- systemctl enable mariadb
 		-- systemctl start mariadb
