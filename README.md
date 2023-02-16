@@ -213,8 +213,9 @@
 			- sudo apt update
 			- sudo mysql -u root -p
 				~ CREATE DATABASE magento2db;
-				~ CREATE USER 'magento2user'@'localhost' IDENTIFIED BY 'admin@123';
-				~ GRANT ALL ON magento2db.* TO 'root'@'localhost' IDENTIFIED BY 'admin@123' WITH GRANT OPTION;
+				~ CREATE USER 'laravel'@'localhost' IDENTIFIED BY '<PASSWORD-HERE>';
+				~ CREATE DATABASE laravel;
+				~ GRANT ALL PRIVILEGES ON laravel.* to 'laravel'@'localhost';
 				~ FLUSH PRIVILEGES;
 				~ exit;
 				
