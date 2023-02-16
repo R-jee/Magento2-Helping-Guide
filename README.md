@@ -43,6 +43,8 @@
 		-- sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
 
 ##	4): sudo install php 7.*, 8.*
+		-- systemctl status php8.1-fpm
+		-- systemctl restart php8.1-fpm
 		-- sudo apt update
 		-- sudo apt install --no-install-recommends php8.1
 		-- sudo apt-get install php8.1-PACKAGE_NAME --> { sudo apt-get install php8.1-PACKAGE_NAME }
