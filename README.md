@@ -56,7 +56,10 @@
 			- sudo add-apt-repository ppa:ondrej/php
 			- sudo apt update
 			- sudo apt install php8.1 libapache2-mod-php8.1
-		
+			- sudo a2dismod php8.1
+			- sudo a2enmod php7.2
+			- sudo service apache2 restart
+			- sudo update-alternatives --config php
 		
 ##	5): sudo install mysql 5.6, 5.7
 		-- sudo systemctl disable mysql.service
