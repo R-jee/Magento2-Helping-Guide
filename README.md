@@ -161,6 +161,7 @@
 			- sudo apt-get --purge autoremove elasticsearch
 			
 ##	8): Install Magento 2
+		--0 /home/eg-umair/.config/composer/auth.json  accessKey stored address
 		--1 sudo apt update
 		--2 Get Magento marketplace accesskey  
 			- https://marketplace.magento.com/customer/accessKeys/
