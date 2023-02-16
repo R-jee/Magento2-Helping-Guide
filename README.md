@@ -1,5 +1,35 @@
 >#	Magento Helping Guide
 
+##	Remove Apache2 & install nginx + mariadb-server&client
+		-- apt-get update
+		-- apt-get upgrade
+		-- apt install -y nginx
+		-- systemctl enable nginx
+		-- systemctl start nginx
+		-- apt-add-repository ppa:ondrej/php -y
+		-- systemctl enable php7.4-fpm
+		-- systemclt start php7.4-fpm
+		-- apt install -y php7.4 php7.4-{cli,gd,curl,mysql,ldap,zip,fileinfo,fpm,xml,mbstring,exif,pspell,imagick,bcmath}
+		-- apt install mariadb-server-10.6 mariadb-client-10.6
+		-- systemctl enable mariadb
+		-- systemctl start mariadb
+		-- mysql_secure_installation
+		-- wget -O composer-setup.php https://getcomposer.org/installer
+		-- php composer-setup.php --install-dir=/usr/bin --filename=composer
+		-- cd /var/www/html
+		-- composer create-project laravel/laravel .
+		-- chown www-data:www-data /var/www/html -R
+		-- mysql -e "CREATE USER 'laravel'@'localhost' IDENTIFIED BY '<PASSWORD-HERE>';"
+		-- mysql -e "CREATE DATABASE laravel;"
+		-- mysql -e "GRANT ALL PRIVILEGES ON laravel.* to 'laravel'@'localhost';" 
+		-- ls /var/run/php/php8.1-fpm.sock
+		-- nano /etc/nginx/sites-available/
+		-- cd /var/www/eg_umair/html/
+		-- cd ..
+		-- ls -al
+		-- chown www-data:www-data html -R
+
+
 ##	Tip-point): if system hangs much often then do this
 		-- go to etc folder
 		-- /etc/elasticsearch/
