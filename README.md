@@ -16,6 +16,7 @@
 		-- sudo mysql_secure_installation
 		
 ##	Remove Apache2 & install nginx + mariadb-server&client
+		-- https://askubuntu.com/questions/176964/permanently-removing-apache2#:~:text=How%20to%20Remove%20Apache2%20from%20My%20Ubuntu%201,configuration%20files.%20sudo%20rm%20-rf%20%2Fetc%2Fapache2.%20See%20More.
 		-- apt-get update
 		-- apt-get upgrade
 		------------------------------
