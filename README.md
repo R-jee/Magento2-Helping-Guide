@@ -1,6 +1,8 @@
 >#	Magento Helping Guide
 
-##	install mariadb with docker 10.4 version
+##	install mariadb with docker 10.4 version && with apt
+		-- sudo apt install mariadb-server-10.3
+		---------------------------------------
 		-- https://cloudinfrastructureservices.co.uk/how-to-install-mariadb-on-docker-container-step-by-step/
 		-- sudo apt update
 		-- sudo apt-get install software-properties-common
