@@ -7,8 +7,10 @@
 		-- sudo add-apt-repository "deb [arch=amd64,arm64,ppc64el] http://mariadb.mirror.liquidtelecom.com/repo/10.4/ubuntu $(lsb_release -cs) main"
 		-- sudo apt update
 		-- sudo apt -y install mariadb-server mariadb-client
+		-- systemctl enable mariadb
+		-- systemctl start mariadb
+		-- mysql_secure_installation
 		-- sudo mysql_secure_installation
-		-- 
 		
 ##	Remove Apache2 & install nginx + mariadb-server&client
 		-- apt-get update
