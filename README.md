@@ -1,5 +1,28 @@
 >#	Magento Helping Guide
 
+##	phpstorm set xdebugger
+		-- sudo apt install php8.1-xdebug
+		-- sudo php -v
+		-- sudo php --ini
+		-- select --> xdebug.ini and edit it with 
+		-- xdebug.remote_enable=1
+			- xdebug.romote_port=9898
+			- xdebug.idekey="PHPSTORM"
+			- xdebug.show_error_trace=1
+			- xdebug.remote_autostart = 0
+			- #xdebug.default_enable=1
+			- #xdebug.romote_port=9000
+		-- In PHPStorm
+			- (ctrl + alt + s) and window will popup
+			- PHP → Debug → Xdebug → Debug Port → 9898 → apply → ok 
+		-- sudo systemctl restart php8.1-fpm
+		-- sudo systemctl restart nginx
+		-- Install the browser debugging extension
+			- Details ---> https://www.jetbrains.com/help/phpstorm/browser-debugging-extensions.html
+		-- helping video 
+			- Details: https://www.jetbrains.com/help/phpstorm/using-breakpoints.html
+		
+		
 ##	Remove Apache2 & install nginx + mariadb-server&client
 		-- apt-get update
 		-- apt-get upgrade
