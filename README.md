@@ -1,22 +1,6 @@
 >#	Magento Helping Guide
 
-##	install mariadb with docker 10.4 version && with apt
-		-- sudo apt install mariadb-server-10.3
-		---------------------------------------
-		-- https://cloudinfrastructureservices.co.uk/how-to-install-mariadb-on-docker-container-step-by-step/
-		-- sudo apt update
-		-- sudo apt-get install software-properties-common
-		-- sudo apt-key adv --recv-keys --keyserver hkp://keyserver.ubuntu.com:80 0xF1656F24C74CD1D8
-		-- sudo add-apt-repository "deb [arch=amd64,arm64,ppc64el] http://mariadb.mirror.liquidtelecom.com/repo/10.4/ubuntu $(lsb_release -cs) main"
-		-- sudo apt update
-		-- sudo apt -y install mariadb-server mariadb-client
-		-- systemctl enable mariadb
-		-- systemctl start mariadb
-		-- mysql_secure_installation
-		-- sudo mysql_secure_installation
-		
 ##	Remove Apache2 & install nginx + mariadb-server&client
-		-- https://askubuntu.com/questions/176964/permanently-removing-apache2#:~:text=How%20to%20Remove%20Apache2%20from%20My%20Ubuntu%201,configuration%20files.%20sudo%20rm%20-rf%20%2Fetc%2Fapache2.%20See%20More.
 		-- apt-get update
 		-- apt-get upgrade
 		------------------------------
@@ -115,6 +99,8 @@
 			- sudo update-alternatives --config php
 		
 ##	5): sudo install mysql 5.6, 5.7
+		-- remove all mysql dir 
+			- https://www.linuxshelltips.com/completely-uninstall-mysql-server-in-ubuntu/
 		-- sudo systemctl disable mysql.service
 		-- sudo systemctl enable mysql.service
 		-- sudo systemctl restart mysql.service
@@ -215,6 +201,7 @@
 			- 
 		-- Step 4 Error in ElasticSearch Solved by
 			- sudo apt-get --purge autoremove elasticsearch
+			- sudo rm -rf /etc/elasticsearch
 			
 ##	8): Install Magento 2
 		--0 /home/eg-umair/.config/composer/auth.json  accessKey stored address
