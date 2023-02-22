@@ -1,28 +1,5 @@
 >#	Magento Helping Guide
 
-##	phpstorm set xdebugger
-		-- sudo apt install php8.1-xdebug
-		-- sudo php -v
-		-- sudo php --ini
-		-- select --> xdebug.ini and edit it with 
-		-- xdebug.remote_enable=1
-			- xdebug.romote_port=9898
-			- xdebug.idekey="PHPSTORM"
-			- xdebug.show_error_trace=1
-			- xdebug.remote_autostart = 0
-			- #xdebug.default_enable=1
-			- #xdebug.romote_port=9000
-		-- In PHPStorm
-			- (ctrl + alt + s) and window will popup
-			- PHP → Debug → Xdebug → Debug Port → 9898 → apply → ok 
-		-- sudo systemctl restart php8.1-fpm
-		-- sudo systemctl restart nginx
-		-- Install the browser debugging extension
-			- Details ---> https://www.jetbrains.com/help/phpstorm/browser-debugging-extensions.html
-		-- helping video 
-			- Details: https://www.jetbrains.com/help/phpstorm/using-breakpoints.html
-		
-		
 ##	Remove Apache2 & install nginx + mariadb-server&client
 		-- apt-get update
 		-- apt-get upgrade
@@ -357,7 +334,89 @@
 		-- sudo chown root:root /etc/sudoers 
 
 
+##	*0): Use self-assign Open ssl 
+		-- sudo openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout /etc/ssl/private/nginx-selfsigned.key -out /etc/ssl/certs/nginx-selfsigned.crt
+		-- While using OpenSSL, you should also create a strong Diffie-Hellman (DH) group
+			- sudo openssl dhparam -out /etc/nginx/dhparam.pem 4096
+		-- sudo nano /etc/nginx/snippets/self-signed.conf
+		-- you’ve added those lines, save the file and exit the editor. If you used nano to edit the file, you can do so by pressing CTRL + X, Y, then ENTER
+			- ssl_certificate /etc/ssl/certs/nginx-selfsigned.crt;
+			- ssl_certificate_key /etc/ssl/private/nginx-selfsigned.key;
+		-- sudo nano /etc/nginx/snippets/ssl-params.conf
+		-- Add the following into your **ssl-params.conf** snippet file:
+			```
+				ssl_protocols TLSv1.3;
+				ssl_prefer_server_ciphers on;
+				ssl_dhparam /etc/nginx/dhparam.pem; 
+				ssl_ciphers EECDH+AESGCM:EDH+AESGCM;
+				ssl_ecdh_curve secp384r1;
+				ssl_session_timeout  10m;
+				ssl_session_cache shared:SSL:10m;
+				ssl_session_tickets off;
+				ssl_stapling on;
+				ssl_stapling_verify on;
+				resolver 8.8.8.8 8.8.4.4 valid=300s;
+				resolver_timeout 5s;
+				# Disable strict transport security for now. You can uncomment the following
+				# line if you understand the implications.
+				#add_header Strict-Transport-Security "max-age=63072000; includeSubDomains; preload";
+				add_header X-Frame-Options DENY;
+				add_header X-Content-Type-Options nosniff;
+				add_header X-XSS-Protection "1; mode=block";
+			```
+		-- sudo cp /etc/nginx/sites-available/**your_domain** /etc/nginx/sites-available/**your_domain**.bak
+		-- sudo nano /etc/nginx/sites-available/**your_domain**
+		-- **Note:** Use a 302 redirect until you have verified that everything is working properly. After, you will change this to a permanent 301 redirect.
+			- add these in file 
+				```
+					server {
+					    listen 443 ssl;
+					    listen [::]:443 ssl;
+					    include snippets/self-signed.conf;
+					    include snippets/ssl-params.conf;
+					root /var/www/**your_domain**/html;
+						index index.html index.php index.htm index.nginx-debian.html;
+					  server_name your_domain.com www.your_domain.com;
+					  location / {
+							try_files $uri $uri/ =404;
+						}
+					}
+				```
+			- alse add after **}** this
+				```
+					server {
+					    listen 80;
+					    listen [::]:80;
+
+					    server_name your_domain.com www.your_domain.com;
+
+					    return 302 https://$server_name$request_uri;
+					}
+				```
+		-- sudo ufw app list
+		-- sudo ufw status
+			- sudo ufw allow 'Nginx Full'
+			- sudo ufw delete allow 'Nginx HTTP'
+		-- sudo ufw status
+		-- sudo nginx -t
+		-- sudo systemctl restart nginx
+		-- sudo nano /etc/nginx/sites-available/**your_domain**
+			- sudo nano /etc/nginx/sites-available/your_domain
+				~ sudo nano /etc/nginx/sites-available/**your_domain**
+		-- sudo nginx -t
+		-- sudo systemctl restart nginx
+		
+
 ##	 0): Use Certbot to Enable HTTPS with NGINX on Ubuntu
+		-- self assign openssl
+			- https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-20-04-1
+		-- sudo apt install certbot python3-certbot-nginx
+			- sudo nginx -t
+			- sudo systemctl reload nginx
+			- sudo ufw status
+			- sudo certbot --nginx -d example.com -d www.example.com
+			
+			
 		-- Configuring Firewall Rules with UFW
 			- If UFW is not installed, install it now using apt or apt-get
 				~ sudo apt update
