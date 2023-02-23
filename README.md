@@ -1,5 +1,19 @@
 >#	Magento Helping Guide
 
+##	XdeBug Settings
+		-- sudo nano /etc/php/8.1/cli/conf.d/20-xdebug.ini	
+			```
+			xdebug.remote_enable = 1
+			xdebug.remote_port = 9898
+			xdebug.idekey = “PHPSTORM”
+			xdebug.show_error_trace = 1
+			xdebug.remote_autostart = 0
+			xdebug.mode=debug
+			xdebug.client_port=9898
+			```
+		-- in project file 
+			~ sudo chown $USER:$USER -R .
+			
 ##	Remove Apache2 & install nginx + mariadb-server&client
 		-- apt-get update
 		-- apt-get upgrade
@@ -78,8 +92,6 @@
 		-- php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } 
 		   else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 		-- sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
-		-- composer 2 ~ 1 downgrade 
-			--> https://stackoverflow.com/questions/64597051/how-to-downgrade-or-install-a-specific-version-of-composer
 
 ##	4): sudo install php 7.*, 8.*
 		-- systemctl status php8.1-fpm
@@ -210,8 +222,6 @@
 		--1 sudo apt update
 		--2 Get Magento marketplace accesskey  
 			- https://marketplace.magento.com/customer/accessKeys/
-			- Magento Market Place key config file path 
-				---> /root/.composer/auth.json
 		--3 cd /var/www/html
 		--4 composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition <install-directory-name>
 			- composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento
