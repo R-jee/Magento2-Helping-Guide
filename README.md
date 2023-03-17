@@ -1,5 +1,22 @@
 >#	Magento Helping Guide
 
+## Commands to setup PHP and Nginx in Ubuntu
+##### Let’s quickly review this PHP and Nginx tutorial. These are all of the commands that we used to enable the fastCGI process manager for PHP in Nginx:
+
+```
+	sudo apt-get update -y
+	sudo apt-get upgrade -y
+	sudo apt-get install nginx -y
+	sudo systemctl status nginx
+	sudo apt-get install php8.1-fpm -y
+	sudo systemctl status php8.1-fpm
+	sudo nano /etc/nginx/sites-available/default
+	sudo nginx -t
+	sudo systemctl restart nginx
+	sudo chmod -R 777 /var/www/html
+	echo "<?php phpinfo(); ?>" >> /var/www/html/info.php
+```
+
 ##	XdeBug Settings
 		-- sudo nano /etc/php/8.1/cli/conf.d/20-xdebug.ini	
 			```
