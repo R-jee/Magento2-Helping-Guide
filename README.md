@@ -238,7 +238,7 @@
 		--0 /home/eg-umair/.config/composer/auth.json  accessKey stored address
 		--1 sudo apt update
 		--2 Get Magento marketplace accesskey  
-			- https://marketplace.magento.com/customer/accessKeys/
+			- https://marketplace.magento.com/customer/accessKeys/  --->  Public Key: de686a15f9d741f7739c92c5eefa190d   Private Key: f505c128e18d79b04e2921c253459942
 		--3 cd /var/www/html
 		--4 composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition <install-directory-name>
 			- composer create-project --repository-url=https://repo.magento.com/ magento/project-community-edition magento
