@@ -352,6 +352,11 @@
 		       		**__OR__**
 			- Open app/etc/config.php and change value for 'Magento_TwoFactorAuth' to 0.
 			- Now execute php bin/magento setup:di:compile
+							       
+			- php bin/magento sampledata:deploy
+		        - php bin/magento setup:upgrade
+			- php bin/magento setup:di:compile
+			- php bin/magento setup:static-content:deploy -f
 		--11 Switch to production mode:
 			- sudo php bin/magento deploy:mode:set production
 			- sudo php bin/magento cache:flush
