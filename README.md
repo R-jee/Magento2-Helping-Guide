@@ -349,6 +349,9 @@
 		--10 Disable Two-Factor Authorization:
 			- sudo php bin/magento module:disable Magento_TwoFactorAuth
 			- sudo php bin/magento cache:flush
+		       		**__OR__**
+			- Open app/etc/config.php and change value for 'Magento_TwoFactorAuth' to 0.
+			- Now execute php bin/magento setup:di:compile
 		--11 Switch to production mode:
 			- sudo php bin/magento deploy:mode:set production
 			- sudo php bin/magento cache:flush
