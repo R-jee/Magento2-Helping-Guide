@@ -131,6 +131,10 @@
 		
 ##	5): sudo install mysql 5.6, 5.7
 		-- remove all mysql dir 
+			- sudo apt-get remove --purge mysql*
+			- sudo apt-get autoremove
+			- sudo apt-get autoclean
+					** OR **
 			- https://www.linuxshelltips.com/completely-uninstall-mysql-server-in-ubuntu/
 		-- sudo systemctl disable mysql.service
 		-- sudo systemctl enable mysql.service
