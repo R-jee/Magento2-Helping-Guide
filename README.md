@@ -496,16 +496,54 @@
 				~ Manually Renew Certificate
 		
 
-## 	Install B2B with Composer
+## Install B2B with Composer
 	- composer require magento/extension-b2b
-	- enter your [authentication keys]([http://www.google.com](https://devdocs.magento.com/guides/v2.3/install-gde/prereq/connect-auth.html?_ga=2.189836459.1829582113.1686125249-664196562.1686125249)) ---> you have stored your public and private keys in `auth.json`
+	- enter your [authentication keys](https://devdocs.magento.com/guides/v2.3/install-gde/prereq/connect-auth.html?_ga=2.189836459.1829582113.1686125249-664196562.1686125249) ---> you have stored your public and private keys in auth.json
 	- sudo bin/magento setup:upgrade
 	- sudo bin/magento setup:di:compile
 	- sudo bin/magento setup:static-content:deploy -f
 	- sudo bin/magento cache:clean
 	- sudo bin/magento indexer:reindex
 	- sudo chmod -R 777 var/ pub/ generated/ app/etc/
-	
+
+## Install B2B:Consumers with Composer [Consumers list](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/start-message-queues.html?lang=en)
+	- sudo bin/magento queue:consumers:list
+		-- product_action_attribute.update
+		-- product_action_attribute.website.update
+		-- exportProcessor
+		-- codegeneratorProcessor
+		-- sales.rule.update.coupon.usage
+		-- sales.rule.quote.trigger.recollect
+		-- media.storage.catalog.image.resize
+		-- matchCustomerSegmentProcessor
+		-- staging.synchronize_entity_period
+		-- product_alert
+		-- negotiableQuotePriceUpdate
+		-- sharedCatalogUpdatePrice
+		-- sharedCatalogUpdateCategoryPermissions
+		-- inventory.source.items.cleanup
+		-- inventory.mass.update
+		-- inventory.reservations.cleanup
+		-- inventory.reservations.update
+		-- inventory.reservations.updateSalabilityStatus
+		-- inventory.indexer.sourceItem
+		-- inventory.indexer.stock
+		-- media.content.synchronization
+		-- media.gallery.renditions.update
+		-- media.gallery.synchronization
+		-- placeOrderProcessor
+		-- purchaseorder.toorder
+		-- purchaseorder.transactional.email
+		-- purchaseorder.validation
+		-- quoteItemCleaner
+		-- inventoryQtyCounter
+		-- commerce.eventing.event.publish
+		-- async.operations.all
+
+	- sudo bin/magento queue:consumers:start sharedCatalogUpdatePrice
+	- sudo bin/magento queue:consumers:start sharedCatalogUpdateCategoryPermissions
+	- **In Case of Errors add these in your cron tabs
+		-- 
 							       
 ##	00): Initial Server Setup with Ubuntu 20.04
 		-- sudo apt update
