@@ -30,7 +30,7 @@
     </a>
   </p>
 
-> #### Commands to setup PHP and Nginx in Ubuntu
+#### Commands to setup PHP and Nginx in Ubuntu
 ###### <small>Let’s quickly review this PHP and Nginx tutorial. These are all of the commands that we used to enable the fastCGI process manager for PHP in Nginx:</small>
 * `sudo apt-get update -y`
 * `sudo apt-get upgrade -y`
@@ -43,9 +43,8 @@
 * `sudo systemctl restart nginx`
 * `sudo chmod -R 777 /var/www/html`
 * `echo "<?php phpinfo(); ?>" >> /var/www/html/info.php`
-<br>
-<br>
-> #####	XdeBug Settings
+
+#####	XdeBug Settings
 * `sudo nano /etc/php/8.1/cli/conf.d/20-xdebug.ini`
     ```
     xdebug.remote_enable = 1
@@ -57,24 +56,23 @@
     xdebug.client_port=9898
     ```
 * in project file `sudo chown $USER:$USER -R .`
-<br>
-<br>
+
 > #####	Remove Apache2 & install nginx + mariadb-server&client
 * `apt-get upgrade`
-------------------------------
+***
 * `apt-get purge apache2`
 * `systemctl disable apache2`
 * `sudo apt-get remove apache2`
-------------------------------
+***
 * `apt install -y nginx`
 * `systemctl enable nginx`
 * `systemctl start nginx`
-------------------------------
+***
 * `apt-add-repository ppa:ondrej/php -y`
 * `systemctl enable php7.4-fpm`
 * `systemclt start php7.4-fpm`
 * `apt install -y php7.4 php7.4-{cli,gd,curl,mysql,ldap,zip,fileinfo,fpm,xml,mbstring,exif,pspell,imagick,bcmath}`
-------------------------------
+***
 * `apt install mariadb-server-10.6 mariadb-client-10.6`
 * `systemctl enable mariadb`
 * `systemctl start mariadb`
@@ -132,10 +130,10 @@
     - `swapon -p 0 /dev/sdc1`
     - `swapoff -a`
     - `swapon -a`
-<br>		
+		
 > ##### sudo apt update
 * sudo apt update
-<br>
+
 
 > ##### sudo install composer
 * `sudo apt update`  `sudo apt install php-cli unzip` go to root `cd ~`
@@ -144,7 +142,7 @@
   * `php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } 
      else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"`
   * `sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer`
-  <br>
+
 
 ##	4): sudo install php 7.*, 8.*
 		-- systemctl status php8.1-fpm
