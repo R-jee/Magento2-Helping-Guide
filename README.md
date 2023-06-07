@@ -496,6 +496,17 @@
 				~ Manually Renew Certificate
 		
 
+## 	Install B2B with Composer
+	- composer require magento/extension-b2b
+	- enter your [authentication keys]([http://www.google.com](https://devdocs.magento.com/guides/v2.3/install-gde/prereq/connect-auth.html?_ga=2.189836459.1829582113.1686125249-664196562.1686125249)) ---> you have stored your public and private keys in `auth.json`
+	- sudo bin/magento setup:upgrade
+	- sudo bin/magento setup:di:compile
+	- sudo bin/magento setup:static-content:deploy -f
+	- sudo bin/magento cache:clean
+	- sudo bin/magento indexer:reindex
+	- sudo chmod -R 777 var/ pub/ generated/ app/etc/
+	
+							       
 ##	00): Initial Server Setup with Ubuntu 20.04
 		-- sudo apt update
 		-- curl -4 icanhazip.com  --> { your_server_ip }
