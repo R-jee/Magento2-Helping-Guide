@@ -1,114 +1,150 @@
->#	Magento Helping Guide
 
-## Commands to setup PHP and Nginx in Ubuntu
-##### Let’s quickly review this PHP and Nginx tutorial. These are all of the commands that we used to enable the fastCGI process manager for PHP in Nginx:
+<p align="center">
+ <img width="100px" src="https://avatars.githubusercontent.com/u/48676778?v=4" align="center" alt="GitHub Readme Stats" />
+ <h2 align="center">Magento Helping Guide</h2>
+ <p align="center">Get dynamically generated GitHub stats on your READMEs!</p>
+</p>
+  <p align="center">
+    <a href="https://github.com/anuraghazra/github-readme-stats/actions">
+      <img alt="Tests Passing" src="https://github.com/anuraghazra/github-readme-stats/workflows/Test/badge.svg" />
+    </a>
+    <a href="https://github.com/anuraghazra/github-readme-stats/graphs/contributors">
+      <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/anuraghazra/github-readme-stats" />
+    </a>
+    <a href="https://codecov.io/gh/anuraghazra/github-readme-stats">
+      <img src="https://codecov.io/gh/anuraghazra/github-readme-stats/branch/master/graph/badge.svg" />
+    </a>
+    <a href="https://github.com/anuraghazra/github-readme-stats/issues">
+      <img alt="Issues" src="https://img.shields.io/github/issues/anuraghazra/github-readme-stats?color=0088ff" />
+    </a>
+    <a href="https://github.com/anuraghazra/github-readme-stats/pulls">
+      <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/anuraghazra/github-readme-stats?color=0088ff" />
+    </a>
+    <br />
+    <br />
+    <a href="https://a.paddle.com/v2/click/16413/119403?link=1227">
+      <img src="https://img.shields.io/badge/Supported%20by-VSCode%20Power%20User%20%E2%86%92-gray.svg?colorA=655BE1&colorB=4F44D6&style=for-the-badge"/>
+    </a>
+    <a href="https://a.paddle.com/v2/click/16413/119403?link=2345">
+      <img src="https://img.shields.io/badge/Supported%20by-Node%20Cli.com%20%E2%86%92-gray.svg?colorA=61c265&colorB=4CAF50&style=for-the-badge"/>
+    </a>
+  </p>
 
-```
-	sudo apt-get update -y
-	sudo apt-get upgrade -y
-	sudo apt-get install nginx -y
-	sudo systemctl status nginx
-	sudo apt-get install php8.1-fpm -y
-	sudo systemctl status php8.1-fpm
-	sudo nano /etc/nginx/sites-available/default
-	sudo nginx -t
-	sudo systemctl restart nginx
-	sudo chmod -R 777 /var/www/html
-	echo "<?php phpinfo(); ?>" >> /var/www/html/info.php
-```
+> #### Commands to setup PHP and Nginx in Ubuntu
+###### <small>Let’s quickly review this PHP and Nginx tutorial. These are all of the commands that we used to enable the fastCGI process manager for PHP in Nginx:</small>
+* `sudo apt-get update -y`
+* `sudo apt-get upgrade -y`
+* `sudo apt-get install nginx -y`
+* `sudo systemctl status nginx`
+* `sudo apt-get install php8.1-fpm -y`
+* `sudo systemctl status php8.1-fpm`
+* `sudo nano /etc/nginx/sites-available/default`
+* `sudo nginx -t`
+* `sudo systemctl restart nginx`
+* `sudo chmod -R 777 /var/www/html`
+* `echo "<?php phpinfo(); ?>" >> /var/www/html/info.php`
+<br>
+<br>
+> #####	XdeBug Settings
+* `sudo nano /etc/php/8.1/cli/conf.d/20-xdebug.ini`
+    ```
+    xdebug.remote_enable = 1
+    xdebug.remote_port = 9898
+    xdebug.idekey = “PHPSTORM”
+    xdebug.show_error_trace = 1
+    xdebug.remote_autostart = 0
+    xdebug.mode=debug
+    xdebug.client_port=9898
+    ```
+* in project file `sudo chown $USER:$USER -R .`
+<br>
+<br>
+> #####	Remove Apache2 & install nginx + mariadb-server&client
+* `apt-get upgrade`
+------------------------------
+* `apt-get purge apache2`
+* `systemctl disable apache2`
+* `sudo apt-get remove apache2`
+------------------------------
+* `apt install -y nginx`
+* `systemctl enable nginx`
+* `systemctl start nginx`
+------------------------------
+* `apt-add-repository ppa:ondrej/php -y`
+* `systemctl enable php7.4-fpm`
+* `systemclt start php7.4-fpm`
+* `apt install -y php7.4 php7.4-{cli,gd,curl,mysql,ldap,zip,fileinfo,fpm,xml,mbstring,exif,pspell,imagick,bcmath}`
+------------------------------
+* `apt install mariadb-server-10.6 mariadb-client-10.6`
+* `systemctl enable mariadb`
+* `systemctl start mariadb`
+* `mysql_secure_installation`
+* `wget -O composer-setup.php https://getcomposer.org/installer`
+* `php composer-setup.php --install-dir=/usr/bin --filename=composer`
+* `cd /var/www/html`
+* `composer create-project laravel/laravel .`
+* `chown www-data:www-data /var/www/html -R`
+* `mysql -e "CREATE USER 'laravel'@'localhost' IDENTIFIED BY '<PASSWORD-HERE>';"`
+* `mysql -e "CREATE DATABASE laravel;"`
+* `mysql -e "GRANT ALL PRIVILEGES ON laravel.* to 'laravel'@'localhost';"`
+* `ls /var/run/php/php8.1-fpm.sock`
+* `nano /etc/nginx/sites-available/`
+* `cd /var/www/eg_umair/html/`
+* `cd ..`
+* `ls -al`
+* `chown www-data:www-data html -R`
 
-##	XdeBug Settings
-		-- sudo nano /etc/php/8.1/cli/conf.d/20-xdebug.ini	
-			```
-			xdebug.remote_enable = 1
-			xdebug.remote_port = 9898
-			xdebug.idekey = “PHPSTORM”
-			xdebug.show_error_trace = 1
-			xdebug.remote_autostart = 0
-			xdebug.mode=debug
-			xdebug.client_port=9898
-			```
-		-- in project file 
-			~ sudo chown $USER:$USER -R .
-			
-##	Remove Apache2 & install nginx + mariadb-server&client
-		-- apt-get update
-		-- apt-get upgrade
-		------------------------------
-		-- apt-get purge apache2
-		-- systemctl disable apache2
-		-- sudo apt-get remove apache2
-		------------------------------
-		-- apt install -y nginx
-		-- systemctl enable nginx
-		-- systemctl start nginx
-		------------------------------
-		-- apt-add-repository ppa:ondrej/php -y
-		-- systemctl enable php7.4-fpm
-		-- systemclt start php7.4-fpm
-		-- apt install -y php7.4 php7.4-{cli,gd,curl,mysql,ldap,zip,fileinfo,fpm,xml,mbstring,exif,pspell,imagick,bcmath}
-		------------------------------
-		-- apt install mariadb-server-10.6 mariadb-client-10.6
-		-- systemctl enable mariadb
-		-- systemctl start mariadb
-		-- mysql_secure_installation
-		-- wget -O composer-setup.php https://getcomposer.org/installer
-		-- php composer-setup.php --install-dir=/usr/bin --filename=composer
-		-- cd /var/www/html
-		-- composer create-project laravel/laravel .
-		-- chown www-data:www-data /var/www/html -R
-		-- mysql -e "CREATE USER 'laravel'@'localhost' IDENTIFIED BY '<PASSWORD-HERE>';"
-		-- mysql -e "CREATE DATABASE laravel;"
-		-- mysql -e "GRANT ALL PRIVILEGES ON laravel.* to 'laravel'@'localhost';" 
-		-- ls /var/run/php/php8.1-fpm.sock
-		-- nano /etc/nginx/sites-available/
-		-- cd /var/www/eg_umair/html/
-		-- cd ..
-		-- ls -al
-		-- chown www-data:www-data html -R
+
+> **Note** if system hangs much often then do this
+* go to etc folder
+  * `/etc/elasticsearch/`
+  * `open "jvm.options" file then`
+* find JVM heap size
+  * in there replace ## `-Xms4G` && `-Xmx4G ` to  `-Xms100m` `-Xmx4G` with nextline tab seprated.
+  * `then restart elasticsearch`
+  * `sudo service elasticsearch restart`
 
 
-##	Tip-point): if system hangs much often then do this
-		-- go to etc folder
-		-- /etc/elasticsearch/
-		-- open "jvm.options" file then
-		-- find  -->  ## IMPORTANT: JVM heap size
-		-- in there replace ## -Xms4G ## -Xmx4G  to  -Xms100m -Xmx4G with nextline tab seprated.
-		-- then restart elasticsearch
-		-- sudo service elasticsearch restart
+>#### _**Give permission**_
+* `cd /var/www/html/magento`
+* `ll`
+* `sudo chmod -R 777 var/ pub/ generated/ app/etc/` ( if server url is not working and loading site then run this command )
+* test by --- http://magento.local.com
+* if error  or for refresh file
+  - `sudo chmod -R 777 var/ pub/ generated/ app/etc/`  in `/var/www/html/magento` folder or `select your magento folder` pointed
+  - `sudo rm -rf /etc/nginx/sites-enabled/magento.local.com`
+  - `sudo ln -s /etc/nginx/sites-available/magento.local.com /etc/nginx/sites-enabled/`
+  - `sudo service nginx restart`
+  - `sudo systemctl restart nginx.service`
 
-## Give permission :: 
-		-- cd /var/www/html/magento
-		-- ll
-		-- sudo chmod -R 777 var/ pub/ generated/ app/etc/  --->                  ( if server url is not working and loading site then run this command )
-		-- test by ---> http://magento.local.com
-		-- if error  or for refresh file
-			- sudo chmod -R 777 var/ pub/ generated/ app/etc/  --> in '/var/www/html/magento' folder or select your magento folder pointed
-			- sudo rm -rf /etc/nginx/sites-enabled/magento.local.com
-			- sudo ln -s /etc/nginx/sites-available/magento.local.com /etc/nginx/sites-enabled/
-			- sudo service nginx restart
-			- sudo systemctl restart nginx.service
 
-##	1): sudo apt-get update
-		-- Check Version of required setup before Installation
-			- Composer: composer or composer --version
-			- PHP: php -v
-			- MySQL: mysql -V OR mysql -v
-			- Elasticsearch: curl -XGET 'http://localhost:9200'
-			- swapon -p 0 /dev/sdc1
-			- swapoff -a
-			- swapon -a
-			
-##	2): sudo apt update
-##	3): sudo install composer
-		-- sudo apt update
-		-- sudo apt install php-cli unzip
-		-- cd ~
-		-- curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php
-		-- HASH=`curl -sS https://composer.github.io/installer.sig`
-		-- php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } 
-		   else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
-		-- sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer
+> ##### sudo apt-get update
+* Check Version of required setup before Installation
+  - Composer: 
+    - `composer` or `composer --version`
+  - PHP: 
+    - `php -v`
+  - MySQL: 
+    - `mysql -V` OR `mysql -v`
+  - Elasticsearch: 
+    - `curl -XGET 'http://localhost:9200'`
+  - For Swap on or off
+    - `swapon -p 0 /dev/sdc1`
+    - `swapoff -a`
+    - `swapon -a`
+<br>		
+> ##### sudo apt update
+* sudo apt update
+<br>
+
+> ##### sudo install composer
+* `sudo apt update`  `sudo apt install php-cli unzip` go to root `cd ~`
+  * `curl -sS https://getcomposer.org/installer -o /tmp/composer-setup.php`
+  * `HASH='curl -sS https://composer.github.io/installer.sig'`
+  * `php -r "if (hash_file('SHA384', '/tmp/composer-setup.php') === '$HASH') { echo 'Installer verified'; } 
+     else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"`
+  * `sudo php /tmp/composer-setup.php --install-dir=/usr/local/bin --filename=composer`
+  <br>
 
 ##	4): sudo install php 7.*, 8.*
 		-- systemctl status php8.1-fpm
@@ -451,108 +487,109 @@
 		
 
 ##	 0): Use Certbot to Enable HTTPS with NGINX on Ubuntu
-		-- self assign openssl
-			- https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-20-04-1
-		-- sudo apt install certbot python3-certbot-nginx
-			- sudo nginx -t
-			- sudo systemctl reload nginx
-			- sudo ufw status
-			- sudo certbot --nginx -d example.com -d www.example.com
-			
-			
-		-- Configuring Firewall Rules with UFW
-			- If UFW is not installed, install it now using apt or apt-get
-				~ sudo apt update
-				~ sudo apt install ufw
-			- Add firewall rules to allow ssh (port 22) connections as well as http (port 80) and https (port 443) traffic.
-				~ sudo ufw allow ssh
-				~ sudo ufw allow http
-				~ sudo ufw allow https
-			- Enable UFW if its not already enabled.
-				~ sudo ufw enable
-				~ sudo ufw status
-		-- Installing Snapd
-			- Installing Snapd
-				~ sudo apt update
-				~ sudo apt install snapd
-			- Install the core snap.
-				~ sudo snap install core
-				~ sudo snap refresh core
-		-- Installing Certbot
-			- Remove any previously installed certbot packages to avoid conflicts with the new Snap package.
-				~ sudo apt remove certbot
-			- sudo apt remove certbot
-				~ sudo snap install --classic certbot
-			- Configure a symbolic link to the Certbot directory using the ln command.
-				~ sudo ln -s /snap/bin/certbot /usr/bin/certbot
-		-- Requesting a TLS/SSL Certificate Using Certbot
-			- Request a certfifcate and automatically configure it on NGINX (recommended):
-				~ sudo certbot --nginx
-		-- Renewing a TLS/SSL Certificate Using Certbot
-			- Test Automated Renewals
-				~ sudo certbot renew --dry-run
-				~ Manually Renew Certificate
-			- Manually Renew Certificate
-				~ Manually Renew Certificate
-		
+    -- self assign openssl
+        - https://www.digitalocean.com/community/tutorials/how-to-create-a-self-signed-ssl-certificate-for-nginx-in-ubuntu-20-04-1
+    -- sudo apt install certbot python3-certbot-nginx
+        - sudo nginx -t
+        - sudo systemctl reload nginx
+        - sudo ufw status
+        - sudo certbot --nginx -d example.com -d www.example.com
+        
+        
+    -- Configuring Firewall Rules with UFW
+        - If UFW is not installed, install it now using apt or apt-get
+            ~ sudo apt update
+            ~ sudo apt install ufw
+        - Add firewall rules to allow ssh (port 22) connections as well as http (port 80) and https (port 443) traffic.
+            ~ sudo ufw allow ssh
+            ~ sudo ufw allow http
+            ~ sudo ufw allow https
+        - Enable UFW if its not already enabled.
+            ~ sudo ufw enable
+            ~ sudo ufw status
+    -- Installing Snapd
+        - Installing Snapd
+            ~ sudo apt update
+            ~ sudo apt install snapd
+        - Install the core snap.
+            ~ sudo snap install core
+            ~ sudo snap refresh core
+    -- Installing Certbot
+        - Remove any previously installed certbot packages to avoid conflicts with the new Snap package.
+            ~ sudo apt remove certbot
+        - sudo apt remove certbot
+            ~ sudo snap install --classic certbot
+        - Configure a symbolic link to the Certbot directory using the ln command.
+            ~ sudo ln -s /snap/bin/certbot /usr/bin/certbot
+    -- Requesting a TLS/SSL Certificate Using Certbot
+        - Request a certfifcate and automatically configure it on NGINX (recommended):
+            ~ sudo certbot --nginx
+    -- Renewing a TLS/SSL Certificate Using Certbot
+        - Test Automated Renewals
+            ~ sudo certbot renew --dry-run
+            ~ Manually Renew Certificate
+        - Manually Renew Certificate
+            ~ Manually Renew Certificate
+    
 
-## Install B2B with Composer
-	- composer require magento/extension-b2b
-	- enter your [authentication keys](https://devdocs.magento.com/guides/v2.3/install-gde/prereq/connect-auth.html?_ga=2.189836459.1829582113.1686125249-664196562.1686125249) ---> you have stored your public and private keys in auth.json
-	- sudo bin/magento setup:upgrade
-	- sudo bin/magento setup:di:compile
-	- sudo bin/magento setup:static-content:deploy -f
-	- sudo bin/magento cache:clean
-	- sudo bin/magento indexer:reindex
-	- sudo chmod -R 777 var/ pub/ generated/ app/etc/
+> ##### Install B2B with Composer
+- composer require magento/extension-b2b
+- enter your [authentication keys](https://devdocs.magento.com/guides/v2.3/install-gde/prereq/connect-auth.html?_ga=2.189836459.1829582113.1686125249-664196562.1686125249) ---> you have stored your public and private keys in auth.json
+- sudo bin/magento setup:upgrade
+- sudo bin/magento setup:di:compile
+- sudo bin/magento setup:static-content:deploy -f
+- sudo bin/magento cache:clean
+- sudo bin/magento indexer:reindex
+- sudo chmod -R 777 var/ pub/ generated/ app/etc/
 
-## Install B2B:Consumers with Composer [Consumers list](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/start-message-queues.html?lang=en)
-	- sudo bin/magento queue:consumers:list
-		-- product_action_attribute.update
-		-- product_action_attribute.website.update
-		-- exportProcessor
-		-- codegeneratorProcessor
-		-- sales.rule.update.coupon.usage
-		-- sales.rule.quote.trigger.recollect
-		-- media.storage.catalog.image.resize
-		-- matchCustomerSegmentProcessor
-		-- staging.synchronize_entity_period
-		-- product_alert
-		-- negotiableQuotePriceUpdate
-		-- sharedCatalogUpdatePrice
-		-- sharedCatalogUpdateCategoryPermissions
-		-- inventory.source.items.cleanup
-		-- inventory.mass.update
-		-- inventory.reservations.cleanup
-		-- inventory.reservations.update
-		-- inventory.reservations.updateSalabilityStatus
-		-- inventory.indexer.sourceItem
-		-- inventory.indexer.stock
-		-- media.content.synchronization
-		-- media.gallery.renditions.update
-		-- media.gallery.synchronization
-		-- placeOrderProcessor
-		-- purchaseorder.toorder
-		-- purchaseorder.transactional.email
-		-- purchaseorder.validation
-		-- quoteItemCleaner
-		-- inventoryQtyCounter
-		-- commerce.eventing.event.publish
-		-- async.operations.all
+> ##### Install B2B:Consumers with Composer [Consumers list](https://experienceleague.adobe.com/docs/commerce-operations/configuration-guide/cli/start-message-queues.html?lang=en)
+- sudo bin/magento queue:consumers:list
+  * product_action_attribute.update
+  * product_action_attribute.website.update
+  * exportProcessor
+  * codegeneratorProcessor
+  * sales.rule.update.coupon.usage
+  * sales.rule.quote.trigger.recollect
+  * media.storage.catalog.image.resize
+  * matchCustomerSegmentProcessor
+  * staging.synchronize_entity_period
+  * product_alert
+  * negotiableQuotePriceUpdate
+  * sharedCatalogUpdatePrice
+  * sharedCatalogUpdateCategoryPermissions
+  * inventory.source.items.cleanup
+  * inventory.mass.update
+  * inventory.reservations.cleanup
+  * inventory.reservations.update
+  * inventory.reservations.updateSalabilityStatus
+  * inventory.indexer.sourceItem
+  * inventory.indexer.stock
+  * media.content.synchronization
+  * media.gallery.renditions.update
+  * media.gallery.synchronization
+  * placeOrderProcessor
+  * purchaseorder.toorder
+  * purchaseorder.transactional.email
+  * purchaseorder.validation
+  * quoteItemCleaner
+  * inventoryQtyCounter
+  * commerce.eventing.event.publish
+  * async.operations.all
 
-	- sudo bin/magento queue:consumers:start sharedCatalogUpdatePrice
-	- sudo bin/magento queue:consumers:start sharedCatalogUpdateCategoryPermissions
-	- *** In Case of Errors *** Add these in your cron tabs
-		-- * * * * * ps ax | grep [s]haredCatalogUpdateCategoryPermissions >>/dev/null 2>&1 || nohup php /var/www/html/magento2/bin/magento queue:consumers:start sharedCatalogUpdateCategoryPermissions &
-		-- * * * * * ps ax | grep [s]haredCatalogUpdatePrice >>/dev/null 2>&1 || nohup php /var/www/html/magento2/bin/magento queue:consumers:start sharedCatalogUpdatePrice &
-							       
-##	00): Initial Server Setup with Ubuntu 20.04
-		-- sudo apt update
-		-- curl -4 icanhazip.com  --> { your_server_ip }
-		-- ssh root@your_server_ip
-		-- Step 2 — Creating a New User
-			- add user --> { adduser testuser }
-		-- Step 3 — Granting Administrative Privileges
-			- usermod -aG sudo testuser
+- sudo bin/magento queue:consumers:start sharedCatalogUpdatePrice
+- sudo bin/magento queue:consumers:start sharedCatalogUpdateCategoryPermissions
+- ###### **In Case of Errors** Add these in your cron tabs
+  - `* * * * * ps ax | grep [s]haredCatalogUpdateCategoryPermissions >>/dev/null 2>&1 || nohup php /var/www/html/magento2/bin/magento queue:consumers:start sharedCatalogUpdateCategoryPermissions &`
+  - `* * * * * ps ax | grep [s]haredCatalogUpdatePrice >>/dev/null 2>&1 || nohup php /var/www/html/magento2/bin/magento queue:consumers:start sharedCatalogUpdatePrice &`
+
+> ##### Initial Server Setup with Ubuntu 20.04
+* Step 1 — `sudo apt update`
+  * `curl -4 icanhazip.com`  --> { your_server_ip }
+  * `ssh root@your_server_ip`
+* Step 2 — Creating a New User
+    - add user 
+      - `adduser testuser`
+* Step 3 — Granting Administrative Privileges
+    - `usermod -aG sudo testuser`
 			
 			
