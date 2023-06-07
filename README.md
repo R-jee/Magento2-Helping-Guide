@@ -543,7 +543,8 @@
 	- sudo bin/magento queue:consumers:start sharedCatalogUpdatePrice
 	- sudo bin/magento queue:consumers:start sharedCatalogUpdateCategoryPermissions
 	- **In Case of Errors add these in your cron tabs
-		-- 
+		-- * * * * * ps ax | grep [s]haredCatalogUpdateCategoryPermissions >>/dev/null 2>&1 || nohup php /var/www/html/magento2/bin/magento queue:consumers:start sharedCatalogUpdateCategoryPermissions &
+		-- * * * * * ps ax | grep [s]haredCatalogUpdatePrice >>/dev/null 2>&1 || nohup php /var/www/html/magento2/bin/magento queue:consumers:start sharedCatalogUpdatePrice &
 							       
 ##	00): Initial Server Setup with Ubuntu 20.04
 		-- sudo apt update
