@@ -580,6 +580,30 @@
   - `* * * * * ps ax | grep [s]haredCatalogUpdateCategoryPermissions >>/dev/null 2>&1 || nohup php /var/www/html/magento2/bin/magento queue:consumers:start sharedCatalogUpdateCategoryPermissions &`
   - `* * * * * ps ax | grep [s]haredCatalogUpdatePrice >>/dev/null 2>&1 || nohup php /var/www/html/magento2/bin/magento queue:consumers:start sharedCatalogUpdatePrice &`
 
+	
+> ##### Create Magento Modeule
+- Unit1/HelloWorld/etc/module.xml
+	```
+	<?xml version="1.0"?>
+	<config xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+		xsi:noNamespaceSchemaLocation="urn:magento:framework:Module/etc/module.xsd">
+	    <module name="Unit1_HelloWorld">
+
+	    </module>
+	</config>
+	```
+- Unit1/HelloWorld/registration.php
+	```
+	<?php
+	use Magento\Framework\Component\ComponentRegistrar;
+	ComponentRegistrar::register(
+	    ComponentRegistrar::MODULE,
+	    'Unit1_HelloWorld',
+	    __DIR__
+	);
+	```
+- php bin/magento module:enable Unit1_HelloWorld
+	
 > ##### Initial Server Setup with Ubuntu 20.04
 * Step 1 — `sudo apt update`
   * `curl -4 icanhazip.com`  --> { your_server_ip }
