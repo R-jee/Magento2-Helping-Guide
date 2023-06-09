@@ -603,6 +603,8 @@
 	);
 	```
 - php bin/magento module:enable Unit1_HelloWorld
+- php bin/magento setup:upgrade
+- sudo chmod -R 777 var/ pub/ generated/ app/etc/
 	
 > ##### Initial Server Setup with Ubuntu 20.04
 * Step 1 — `sudo apt update`
