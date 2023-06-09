@@ -19,7 +19,7 @@ sudo php bin/magento setup:upgrade
 sudo chmod -R 777 var/ pub/ generated/ app/etc/
 ```
 <details>
-    <summary markdown="span">Picture of module <code>HelloWorld</code></summary>
+    <summary markdown="span"><font color="#f5deb3">Picture of module <code>HelloWorld</code></font></summary>
     <image src="https://data.terabox.com/thumbnail/80e172adf7d62550bdcb0e975459f4f0?fid=4400792537950-250528-1036449040183911&time=1686308400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-PImMV6aIFhD%2FCet4Nejd%2BYOytj8%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=247314799587999843&dp-callid=0&size=c1600_u1600&quality=100&vuk=-&ft=video"></image>
 </details>
 
