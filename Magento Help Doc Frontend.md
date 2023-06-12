@@ -1,8 +1,7 @@
 # ![](https://th.bing.com/th?id=ODLS.194d04fb-feff-41d9-b83c-1cbe98afa6ec&w=32&h=32&o=6&pid=13.1) **<font color=""> Magento Training Exercises</font>**
-
 >### **<font color="#4267b2"> Chapter # 1 Exercises</font>**
 
-##### Exercises # 1.1<font color="Yellow"> ( Created an empty Hello World module in app/code & enable it) </font>
+#### Exercises # 1.1<font color="Yellow"> ( Created an empty Hello World module in app/code & enable it) </font>
 
 ###### **<font color="Green">Answer</font>** In this exercise, created an empty module `HelloWorld` and anable it & use these commands
 
@@ -26,7 +25,7 @@ sudo chmod -R 777 var/ pub/ generated/ app/etc/
 
 ***
 
-##### Exercises # 1.2<font color="Yellow"> ( Browse the Magento codebase & list all possible config files in the <Module>/etc folder. How many areas are used for those files? ) </font>
+#### Exercises # 1.2<font color="Yellow"> ( Browse the Magento codebase & list all possible config files in the <Module>/etc folder. How many areas are used for those files? ) </font>
 ###### **<font color="Green">Answer</font>**
 1.2.1. Browse the Magento codebase & list all possible config files in the <Module>/etc folder.
 
@@ -155,7 +154,7 @@ zip_codes.xml
 
 ***
 
-##### Exercises # 1.3<font color="Yellow"> ( Create a Preference for Magento\Theme\Block\Html\Footer. Modify the method getCopyright() so that it adds the text "Hello World" next to copyright ? Disable your customization after verify that it works? ) </font>
+#### Exercises # 1.3<font color="Yellow"> ( Create a Preference for Magento\Theme\Block\Html\Footer. Modify the method getCopyright() so that it adds the text "Hello World" next to copyright ? Disable your customization after verify that it works? ) </font>
 ###### **<font color="Green">Answer</font>**
 1.3.1. Create a Preference for `Magento\Theme\Block\Html\Footer`. Modify the method `getCopyright()` so that it adds the text `"Hello World"` next to copyright.
 - <small>First created a module `Unit1/AfterFooter` create etc/module.xml & registration.php file </small>
@@ -186,7 +185,7 @@ php bin/magento module:status Unit1_AfterFooter
 
 ***
 
-##### Exercises # 1.4<font color="Yellow"> ( Create an After plugin to the \Magento\Framework\App\Action\Action::dispatch method which is called every time magento processes a URL. Make this plugin only work on frontend. -Inject Psr\Log\LoggerInterface into plugin's constructor. Access an instance of action class in the plugin & call $subject->getRequest()->getFullActionName() to get full action name that corresponds to the URL. -Log this info using LoggerInterface. -Find the file it logs to & find your record. ) </font>
+#### Exercises # 1.4<font color="Yellow"> ( Create an After plugin to the \Magento\Framework\App\Action\Action::dispatch method which is called every time magento processes a URL. Make this plugin only work on frontend. -Inject Psr\Log\LoggerInterface into plugin's constructor. Access an instance of action class in the plugin & call $subject->getRequest()->getFullActionName() to get full action name that corresponds to the URL. -Log this info using LoggerInterface. -Find the file it logs to & find your record. ) </font>
 ###### **<font color="Green">Answer</font>**
 1.4.1. Create an After plugin to the `\Magento\Framework\App\Action\Action::dispatch` method which is called every time magento processes a URL. Make this plugin only work on frontend.
 - <small>Created After-plugin type `Unit1AfterPluginAction` to get the URL request action name as result from Magento action dispatch method</small>
