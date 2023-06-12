@@ -19,8 +19,9 @@ sudo php bin/magento setup:upgrade
 sudo chmod -R 777 var/ pub/ generated/ app/etc/
 ```
 <details>
-    <summary markdown="span"><font color="#f5deb3">Picture of module <code>HelloWorld</code></font></summary>
-    <image src="https://data.terabox.com/thumbnail/80e172adf7d62550bdcb0e975459f4f0?fid=4400792537950-250528-1036449040183911&time=1686308400&rt=sh&sign=FDTAER-DCb740ccc5511e5e8fedcff06b081203-PImMV6aIFhD%2FCet4Nejd%2BYOytj8%3D&expires=8h&chkv=0&chkbd=0&chkpc=&dp-logid=247314799587999843&dp-callid=0&size=c1600_u1600&quality=100&vuk=-&ft=video"></image>
+    <summary markdown="span">Picture of module <code>HelloWorld</code></summary>
+
+![](https://raw.githubusercontent.com/R-jee/Magento2-Helping-Guide/87a64196d84f3a2ce305d956b74b7e09a5973a52/Screenshot%20from%202023-06-09%2011-49-09.png)
 </details>
 
 ***
@@ -151,3 +152,11 @@ zip_codes.xml
 /webapi_soap 
 ```
 </details>
+
+***
+
+##### Exercises # 1.3<font color="Yellow"> ( Create a Preference for Magento\Theme\Block\Html\Footer. Modify the method getCopyright() so that it adds the text "Hello World" next to copyright ? Disable your customization after verify that it works? ) </font>
+###### **<font color="Green">Answer</font>**
+1.3.1. Create a Preference for `Magento\Theme\Block\Html\Footer`. Modify the method `getCopyright()` so that it adds the text `"Hello World"` next to copyright.
+
+1.3.2. Disable your customization after verify that it works?
