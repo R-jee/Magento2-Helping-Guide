@@ -148,6 +148,6 @@ zip_codes.xml
 /frontend
 /graphql
 /webapi_rest
-/ebapi_soap 
+/webapi_soap 
 ```
 </details>
