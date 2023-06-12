@@ -162,7 +162,7 @@ zip_codes.xml
 - <small>Create depandency config file `etc/frontend/di.xml` </small>
 - <small>Create `<module>/Block/Html/Footer.php` file to modify `getCopyright()` function</small>
 <details>
-    <summary markdown="span">Picture of module <code>AfterFooter</code> & enabled it.</summary>
+    <summary markdown="span"><font color="#f5deb3">Picture of module <code>AfterFooter</code> & enabled it.</font></summary>
 
 ![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-12%2013-24-15.png?raw=true)
 
@@ -179,7 +179,7 @@ sudo php bin/magento module:disable Unit1_AfterFooter
 php bin/magento module:status Unit1_AfterFooter
 ```
 <details>
-    <summary markdown="span">Picture of module disabled <code>AfterFooter</code> & enabled it.</summary>
+<summary markdown="span"><font color="#f5deb3">Picture of module disabled <code>AfterFooter</code></font></summary>
 
 ![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-12%2013-43-02.png?raw=true)
 </details>
@@ -195,12 +195,20 @@ php bin/magento module:status Unit1_AfterFooter
 1.4.2. Inject `Psr\Log\LoggerInterface` into plugin's constructor.
 - <small>Use LoggerInterface to log the output for URL request action name</small>
 
-1.4.2. Access an instance of action class in the plugin & call `$subject->getRequest()->getFullActionName()` to get full action name that corresponds to the URL.
+1.4.3. Access an instance of action class in the plugin & call `$subject->getRequest()->getFullActionName()` to get full action name that corresponds to the URL.
 - <small>Use the `$subject->getRequest()->getFullActionName()` to get the URL action request Full-name</small>
-- 
-1.4.2. Log this info using `LoggerInterface`.
-- <small>Disable the module `Unit1_AfterFooter`</small>
-- 
-1.4.2. Find the file it logs to & find your record.
-- <small>Disable the module `Unit1_AfterFooter`</small>
-- https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-12%2018-36-43.png?raw=true
+
+1.4.4. Log this info using `LoggerInterface`.
+
+<details>
+<summary markdown="span"><font color="#f5deb3">Log output image</font></summary>
+    
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-12%2018-36-43.png?raw=true)
+</details>
+
+1.4.5. Find the file it logs to & find your record.
+- <small>Log output file location `var/log/system.log` </small>
+
+***
+
+
