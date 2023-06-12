@@ -158,5 +158,49 @@ zip_codes.xml
 ##### Exercises # 1.3<font color="Yellow"> ( Create a Preference for Magento\Theme\Block\Html\Footer. Modify the method getCopyright() so that it adds the text "Hello World" next to copyright ? Disable your customization after verify that it works? ) </font>
 ###### **<font color="Green">Answer</font>**
 1.3.1. Create a Preference for `Magento\Theme\Block\Html\Footer`. Modify the method `getCopyright()` so that it adds the text `"Hello World"` next to copyright.
+- <small>First created a module `Unit1/AfterFooter` create etc/module.xml & registration.php file </small>
+- <small>Create depandency config file `etc/frontend/di.xml` </small>
+- <small>Create `<module>/Block/Html/Footer.php` file to modify `getCopyright()` function</small>
+<details>
+    <summary markdown="span">Picture of module <code>AfterFooter</code> & enabled it.</summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-12%2013-24-15.png?raw=true)
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-12%2013-30-05.png?raw=true)
+</details>
 
 1.3.2. Disable your customization after verify that it works?
+- <small>Disable the module `Unit1_AfterFooter`</small>
+```shell
+sudo php bin/magento module:disable Unit1_AfterFooter
+```
+- <small>Check module status</small>
+```shell
+php bin/magento module:status Unit1_AfterFooter
+```
+<details>
+    <summary markdown="span">Picture of module disabled <code>AfterFooter</code> & enabled it.</summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-12%2013-43-02.png?raw=true)
+</details>
+
+***
+
+##### Exercises # 1.4<font color="Yellow"> ( Create an After plugin to the \Magento\Framework\App\Action\Action::dispatch method which is called every time magento processes a URL. Make this plugin only work on frontend. -Inject Psr\Log\LoggerInterface into plugin's constructor. Access an instance of action class in the plugin & call $subject->getRequest()->getFullActionName() to get full action name that corresponds to the URL. -Log this info using LoggerInterface. -Find the file it logs to & find your record. ) </font>
+###### **<font color="Green">Answer</font>**
+1.4.1. Create an After plugin to the `\Magento\Framework\App\Action\Action::dispatch` method which is called every time magento processes a URL. Make this plugin only work on frontend.
+- <small>Created After-plugin type `Unit1AfterPluginAction` to get the URL request action name as result from Magento action dispatch method</small>
+- <small>Created DI in `etc/frontend/di.xml` folder to Make this plugin only work on frontend</small>
+
+1.4.2. Inject `Psr\Log\LoggerInterface` into plugin's constructor.
+- <small>Use LoggerInterface to log the output for URL request action name</small>
+
+1.4.2. Access an instance of action class in the plugin & call `$subject->getRequest()->getFullActionName()` to get full action name that corresponds to the URL.
+- <small>Use the `$subject->getRequest()->getFullActionName()` to get the URL action request Full-name</small>
+- 
+1.4.2. Log this info using `LoggerInterface`.
+- <small>Disable the module `Unit1_AfterFooter`</small>
+- 
+1.4.2. Find the file it logs to & find your record.
+- <small>Disable the module `Unit1_AfterFooter`</small>
+- https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-12%2018-36-43.png?raw=true
