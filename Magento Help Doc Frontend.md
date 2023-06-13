@@ -218,7 +218,7 @@ php bin/magento module:status Unit1_AfterFooter
 
 #### Exercises # 1.6
 ###### **<font color="Green">Answer</font>**
-- <small>Get list of all magento available commands 
+1.6.1. <small>Get list of all magento available commands </small>
 ```shell
 php bin/magento
 ```
@@ -226,7 +226,6 @@ php bin/magento
 
 **Magento CLI 2.4.6**
 ```
-
 Usage:
   command [options] [arguments]
 
@@ -398,11 +397,65 @@ Available commands:
   theme:uninstall                                      Uninstalls theme
  varnish
   varnish:vcl:generate                                 Generates Varnish VCL and echos it to the command line
-
 ```
 </details>
 
-- <small>Get list of all magento Active & Disable modules 
+1.6.2. <small>Get list of all magento Active & Inactive modules </small>
 ```shell
 php bin/magento module:status
 ```
+
+1.6.3. <small>Clean the cache</small>
+```shell
+php bin/magento cache:clean
+```
+
+1.6.4. <small>Clean only config cache</small>
+```shell
+php bin/magento cache:clean config
+```
+
+1.6.5. <small>List of available indexers</small>
+<details><summary markdown="span"><font color="#f5deb3">Show available indexers</font></summary>
+
+```
+design_config_grid                       Design Config Grid
+customer_grid                            Customer Grid
+catalog_category_product                 Category Products
+catalog_product_category                 Product Categories
+catalogrule_rule                         Catalog Rule Product
+catalog_product_attribute                Product EAV
+inventory                                Inventory
+catalogrule_product                      Catalog Product Rule
+cataloginventory_stock                   Stock
+catalogpermissions_product               Catalog Product Permissions
+targetrule_product_rule                  Product/Target Rule
+targetrule_rule_product                  Target Rule/Product
+catalogpermissions_category              Catalog Category Permissions
+catalog_product_price                    Product Price
+catalogsearch_fulltext                   Catalog Search
+salesrule_rule                           Sales Rule
+```
+###### **Available Indexer commands**
+```
+php bin/magento indexer:info     
+php bin/magento indexer:reindex  
+php bin/magento indexer:reset    
+php bin/magento indexer:set-dimensions-mode    
+php bin/magento indexer:set-mode
+php bin/magento indexer:show-dimensions-mode   
+php bin/magento indexer:show-mode
+php bin/magento indexer:status
+```
+</details>
+
+1.6.6. <small>Reindex Price</small>
+```shell
+php bin/magento indexer:reindex catalog_product_price
+```
+
+<br>
+
+>### **<font color="#4267b2"> Chapter # 2 Exercises</font>**
+
+
