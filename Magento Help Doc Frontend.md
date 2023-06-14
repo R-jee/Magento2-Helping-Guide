@@ -193,7 +193,7 @@ php bin/magento module:status Unit1_AfterFooter
 
 1.4.4. Log this info using `LoggerInterface`.
 <details><summary markdown="span"><font color="#f5deb3">Log output image</font></summary>
-    
+
 ![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-12%2018-36-43.png?raw=true)
 </details>
 
@@ -456,6 +456,25 @@ php bin/magento indexer:reindex catalog_product_price
 
 <br>
 
+# ![](https://th.bing.com/th?id=ODLS.194d04fb-feff-41d9-b83c-1cbe98afa6ec&w=32&h=32&o=6&pid=13.1) **<font color=""> Magento Training Exercises</font>**
 >### **<font color="#4267b2"> Chapter # 2 Exercises</font>**
 
+#### Exercises # 2.1
+###### **<font color="Green">Answer</font>**
+- <small>Created a module, create preference to modify the class `\Magento\Framework\App\FrontController` </small>
+- <small>Use `LoggerInterface` to log info</small>
+- <small>In `dispatch` function get list of routes & map these routers class names using `get_class($router)` function</small>
+
+<details><summary markdown="span"><font color="#f5deb3">Show List of Routers log <code>var/log/system.log</code> file</font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-14%2011-49-25.png?raw=true)
+</details>
+
+#### Exercises # 2.2
+###### **<font color="Green">Answer</font>**
+- <small>Route of shopping cart page is `/checkout/cart/` </small>
+- <small>Action class for shopping cart page is `magento/module-checkout/Controller/Cart/index.php` </small>
+```shell
+find vendor/magento/module-checkout -name Index.php
+```
 
