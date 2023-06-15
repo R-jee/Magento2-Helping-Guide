@@ -501,11 +501,32 @@ find vendor/magento/module-checkout -name Index.php
 </details>
 
 2.3.3. <small>Create Action class for showing Json Result (return array containing "Hello World")</small>
-- <small>Created action controller `RawResults.php` with URL-Path `resultobjects/raw/rawresults` FrontName - `resultobjects` ID - `resultobjects`</small>
-- <small>Checked the output Raw Result at URL - `/resultobjects/raw/rawresults`</small>
+- <small>Created action controller `JsonResults.php` with URL-Path `resultobjects/json/jsonresults` FrontName - `resultobjects` ID - `resultobjects`</small>
+- <small>Checked the output Json Result at URL - `/resultobjects/json/jsonresults`</small>
+- <small>Set json result data at - `$jsonResult->setJsonData(json_encode(['json_result_payload' => "Hello World"]));`</small>
+<details><summary markdown="span"><font color="#f5deb3"><small>See <code>resultobjects/json/jsonresults</code> Output </small></font></summary>
 
-<details><summary markdown="span"><font color="#f5deb3"><small>See <code>resultobjects/raw/rawresults</code> Output </small></font></summary>
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2012-34-14.png?raw=true)
+</details>
+
+2.3.4. <small>Create Action class for Redirecting to Raw Result above</small>
+- <small>Created action controller `RedirectResults.php` with URL-Path `resultobjects/redirect/redirectresults` FrontName - `resultobjects` ID - `resultobjects`</small>
+- <small>Checked the output Redirect Result at URL - `/resultobjects/raw/rawresults/`</small>
+- <small>Set redirect result path at - `$redirectResult->setPath('resultobjects/raw/rawresults');`</small>
+<details><summary markdown="span"><font color="#f5deb3"><small>See <code>resultobjects/redirect/redirectresults</code> Output </small></font></summary>
 
 ![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2012-11-05.png?raw=true)
 </details>
+
+2.3.5. <small>Create Action class for Forwarding to Json Result above</small>
+- <small>Created action controller `ForwardResults.php` with URL-Path `resultobjects/forward/forwardresults` FrontName - `resultobjects` ID - `resultobjects`</small>
+- <small>Checked the output Forward Result at URL - `resultobjects/json/jsonresults` this will not change header only changes the page content</small>
+- <small>Forward request will Return `jsonresults` action-name content</small>
+- <small>`$forwardResult->setModule('resultobjects')->setController('json')->forward('jsonresults');`</small>
+<details><summary markdown="span"><font color="#f5deb3"><small>See <code>resultobjects/forward/forwardresults</code> Output </small></font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2015-49-33.png?raw=true)
+</details>
+
+
 
