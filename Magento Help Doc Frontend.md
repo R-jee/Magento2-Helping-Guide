@@ -454,10 +454,7 @@ php bin/magento indexer:status
 php bin/magento indexer:reindex catalog_product_price
 ```
 
-<br>
-
-# ![](https://th.bing.com/th?id=ODLS.194d04fb-feff-41d9-b83c-1cbe98afa6ec&w=32&h=32&o=6&pid=13.1) **<font color=""> Magento Training Exercises</font>**
->### **<font color="#4267b2"> Chapter # 2 Exercises</font>**
+************************************************************************************************************************************************************************************************************************************************
 
 #### Exercises # 2.1
 ###### **<font color="Green">Answer</font>**
@@ -470,6 +467,8 @@ php bin/magento indexer:reindex catalog_product_price
 ![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-14%2011-49-25.png?raw=true)
 </details>
 
+****
+
 #### Exercises # 2.2
 ###### **<font color="Green">Answer</font>**
 - <small>Route of shopping cart page is `/checkout/cart/` </small>
@@ -477,4 +476,35 @@ php bin/magento indexer:reindex catalog_product_price
 ```shell
 find vendor/magento/module-checkout -name Index.php
 ```
+****
+
+#### Exercises # 2.3
+###### **<font color="Green">Answer</font>**
+2.3.1. <small>Create Action class for showing empty page</small>
+- <small>Create `routes.xml` file that pointed our module</small>
+- <small>Created action controller `PageResults.php` with URL-Path `resultobjects/page/pageresults` FrontName - `resultobjects` ID - `resultobjects`</small>
+- <small>Checked the output empty page at URL - `/resultobjects/page/pageresults`</small>
+
+<details><summary markdown="span"><font color="#f5deb3"><small>See <code>resultobjects/page/pageresults</code> Output </small></font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2012-02-56.png?raw=true)
+</details>
+
+2.3.2. <small>Create Action class for showing Raw Result (return "Hello World")</small>
+- <small>Created action controller `RawResults.php` with URL-Path `resultobjects/raw/rawresults` FrontName - `resultobjects` ID - `resultobjects`</small>
+- <small>Checked the output Raw Result at URL - `/resultobjects/raw/rawresults`</small>
+
+<details><summary markdown="span"><font color="#f5deb3"><small>See <code>resultobjects/raw/rawresults</code> Output </small></font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2012-11-05.png?raw=true)
+</details>
+
+2.3.3. <small>Create Action class for showing Json Result (return array containing "Hello World")</small>
+- <small>Created action controller `RawResults.php` with URL-Path `resultobjects/raw/rawresults` FrontName - `resultobjects` ID - `resultobjects`</small>
+- <small>Checked the output Raw Result at URL - `/resultobjects/raw/rawresults`</small>
+
+<details><summary markdown="span"><font color="#f5deb3"><small>See <code>resultobjects/raw/rawresults</code> Output </small></font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2012-11-05.png?raw=true)
+</details>
 
