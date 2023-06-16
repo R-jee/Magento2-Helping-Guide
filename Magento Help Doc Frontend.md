@@ -454,7 +454,8 @@ php bin/magento indexer:status
 php bin/magento indexer:reindex catalog_product_price
 ```
 
-************************************************************************************************************************************************************************************************************************************************
+*********************************************************************************************************************
+
 >### **<font color="#4267b2"> Chapter # 2 Exercises</font>**
 
 #### Exercises # 2.1
@@ -528,5 +529,46 @@ find vendor/magento/module-checkout -name Index.php
 ![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2015-49-33.png?raw=true)
 </details>
 
+****
 
+#### Exercises # 2.4
+###### **<font color="Green">Answer</font>**
+- <small>Check `url_rewrite` Table in database & find `entity_type`, `request_path` against request product url </small>
+```sql
+Select * from url_rewrite WHERE entity_type ="product" AND request_path = "strive-shoulder-pack.html" AND store_id = 3
+```
+<details><summary markdown="span"><font color="#f5deb3"><small>See <code>url_rewrite</code> Table Output </small></font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2016-14-48.png?raw=true)
+</details>
+
+- <small>Check verified result for <code>/strive-shoulder-pack.html</code> & <code>/catalog/product/view/id/2</code></small>
+<details><summary markdown="span"><font color="#f5deb3"><small>Show Details</small></font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2016-15-02.png?raw=true)
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-15%2016-42-23.png?raw=true)
+</details>
+
+****
+
+#### Exercises # 2.5
+###### **<font color="Green">Answer</font>**
+
+- <small>Created Command `custom:urlrewrite:create` to Generate SEO friendly URLs against the action class of result objects `(Page|Raw|Json|Redirect|Forward)`</small>
+- <small>Created SEO Command file in `Unit2/ResultObjects/Console/Command/CreateUrlRewriteCommand.php` </small>
+<details><summary markdown="span"><font color="#f5deb3"><small>Show SEO URL Command <code>custom:urlrewrite:create</code> </small></font></summary>
+
+```shell
+sudo php bin/magento custom:urlrewrite:create
+```
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-16%2020-05-06.png?raw=true)
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-16%2020-05-51.png?raw=true)
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-06-16%2020-06-45.png?raw=true)
+
+</details>
+
+*********************************************************************************************************************
 
