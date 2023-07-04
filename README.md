@@ -30,6 +30,11 @@
     </a>
   </p>
 
+Public Key: de686a15f9d741f7739c92c5eefa190d
+
+Private Key: f505c128e18d79b04e2921c253459942
+
+
 #### Commands to setup PHP and Nginx in Ubuntu
 ###### <small>Let’s quickly review this PHP and Nginx tutorial. These are all of the commands that we used to enable the fastCGI process manager for PHP in Nginx:</small>
 * `sudo apt-get update -y`
