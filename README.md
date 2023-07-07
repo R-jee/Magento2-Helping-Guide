@@ -271,6 +271,14 @@
 		-- Step 4 Error in ElasticSearch Solved by
 			- sudo apt-get --purge autoremove elasticsearch
 			- sudo rm -rf /etc/elasticsearch
+   		-- Step 6 remove overall elasticSearch
+			- sudo apt-get --purge autoremove elasticsearch
+   			- sudo apt-get remove --purge elasticsearch
+      			- sudo rm -rf /etc/elasticsearch
+			- sudo rm -rf /var/lib/elasticsearch
+   			- sudo apt-get install elasticsearch=7.10.1
+			- sudo systemctl start elasticsearch
+			- curl http://localhost:9200/
 			
 ##	8): Install Magento 2
 		--0 /home/eg-umair/.config/composer/auth.json  accessKey stored address
