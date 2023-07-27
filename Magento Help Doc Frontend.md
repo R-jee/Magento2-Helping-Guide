@@ -1,3 +1,30 @@
+
+<p align="center">
+ <img width="100px" src="https://avatars.githubusercontent.com/u/48676778?v=4" align="center" alt="GitHub Readme Stats" />
+ <h2 align="center">Magento Helping Guide</h2>
+ <p align="center">Get dynamically generated GitHub stats on your READMEs!</p>
+</p>
+<p align="center">
+  <a href="https://github.com/R-jee">
+    <img alt="Tests Passing" src="https://github.com/anuraghazra/github-readme-stats/workflows/Test/badge.svg" />
+  </a>
+  <a href="https://github.com/R-jee">
+    <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/anuraghazra/github-readme-stats" />
+  </a>
+  <a href="https://github.com/R-jee">
+    <img src="https://codecov.io/gh/anuraghazra/github-readme-stats/branch/master/graph/badge.svg" />
+  </a>
+  <a href="https://github.com/R-jee">
+    <img alt="Issues" src="https://img.shields.io/github/issues/anuraghazra/github-readme-stats?color=0088ff" />
+  </a>
+  <a href="https://github.com/R-jee">
+    <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/anuraghazra/github-readme-stats?color=0088ff" />
+  </a>
+  <br />
+  <br />
+</p>
+
+***************************************************************************************************************************************************
 # ![](https://th.bing.com/th?id=ODLS.194d04fb-feff-41d9-b83c-1cbe98afa6ec&w=32&h=32&o=6&pid=13.1) **<font color=""> Magento Training Exercises</font>**
 >### **<font color="#4267b2"> Chapter # 1 Exercises</font>**
 
@@ -454,7 +481,8 @@ php bin/magento indexer:status
 php bin/magento indexer:reindex catalog_product_price
 ```
 
-*********************************************************************************************************************
+***************************************************************************************************************************************************
+# ![](https://th.bing.com/th?id=ODLS.194d04fb-feff-41d9-b83c-1cbe98afa6ec&w=32&h=32&o=6&pid=13.1) **<font color=""> Magento Training Exercises</font>**
 
 >### **<font color="#4267b2"> Chapter # 2 Exercises</font>**
 
@@ -570,5 +598,92 @@ sudo php bin/magento custom:urlrewrite:create
 
 </details>
 
-*********************************************************************************************************************
+***********************************************************************************************************************************
+# ![](https://th.bing.com/th?id=ODLS.194d04fb-feff-41d9-b83c-1cbe98afa6ec&w=32&h=32&o=6&pid=13.1) **<font color=""> Magento Training Exercises</font>**
+>### **<font color="#4267b2"> Chapter # 3 Exercises</font>**
+
+#### Exercises # 3.1
+###### **<font color="Green">Answer</font>**
+- <small>Created a module, create action class to `Unit3\HelloWorldBlock\Controller\Block\TextBlock` </small>
+- <small>Use `getLayout()->createBlock` to instantiate block</small>
+- <small>Return raw text with `$result->setContents($block->toHtml())` </small>
+- <small>Check output at `/helloworldblock/block/blocktext` </small>
+
+<details><summary markdown="span"><font color="#f5deb3">Output is shown as below</font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-07-11%2020-28-30.png?raw=true)
+</details>
+
+****
+
+#### Exercises # 3.2
+###### **<font color="Green">Answer</font>**
+- <small>Created a module, create action class to `Unit3\HelloWorldBlockTemplate\Controller\Block\BlockWithTemplateFile` </small>
+- <small>Use `$_block->setTemplate('blocktemplatefile.phtml')` to assign block template`</small>
+- <small>Return result html of block with `$result->setContents($block->toHtml())` </small>
+- <small>Check output at `/helloworldblocktemplate/block/blockwithtemplatefile` </small>
+
+<details><summary markdown="span"><font color="#f5deb3">Output is shown as below</font></summary>
+
+![](https://raw.githubusercontent.com/R-jee/Magento2-Helping-Guide/main/Screenshot%20from%202023-07-19%2003-41-40.png)
+</details>
+
+****
+
+#### Exercises # 3.3
+###### **<font color="Green">Answer</font>**
+- <small>Created a module, create action class to `Unit3/LayoutContentContainer/Controller/Index/Index` </small>
+- <small>Use `$_block->setTemplate('blocktemplatefile.phtml')` to render page template`</small>
+- <small>Return result html of block with `$this->pageFactory->create();` </small>
+- <small>Check output at `/layoutcontentcontainer/index/index` </small>
+
+<details><summary markdown="span"><font color="#f5deb3">Output is shown as below</font></summary>
+
+![](https://raw.githubusercontent.com/R-jee/Magento2-Helping-Guide/main/Screenshot%20from%202023-07-26%2013-26-08.png)
+</details>
+
+****
+
+#### Exercises # 3.4
+###### **<font color="Green">Answer</font>**
+- <small>Created a module, create action class to `Unit3/LayoutContentContainer/Controller/Index/Index` </small>
+- <small>Use `$_block->setTemplate('blocktemplatefile.phtml')` to render page template`</small>
+- <small>Return result html of block with `$this->pageFactory->create();` </small>
+- <small>Check output at `/layoutcontentcontainer/index/index` </small>
+
+<details><summary markdown="span"><font color="#f5deb3">Output is shown as below</font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-07-26%2015-07-11.png?raw=true)
+</details>
+
+****
+
+#### Exercises # 3.5
+###### **<font color="Green">Answer</font>**
+- <small>Created a module, create action class to `Unit3/MyAccountBonusesSection/Controller/MyBonuses/Index` </small>
+- <small>Use `$this->pageFactory->create();` to render page template`</small>
+- <small>Create a layout `myaccountbonusessection_mybonuses_index` to render in `customer_account` </small>
+- <small>Render `Hello World` with `<argument translate="true" name="text" xsi:type="string">Hello World</argument>`</small>
+- <small>Put `My Bounses` with sortOrder 120 after `Gigt Card`</small>
+- <small>Check output at `/myaccountbonusessection/mybonuses/index/` </small>
+
+<details><summary markdown="span"><font color="#f5deb3">Output is shown as below</font></summary>
+
+![](https://raw.githubusercontent.com/R-jee/Magento2-Helping-Guide/main/Screenshot%20from%202023-07-27%2012-23-01.png)
+</details>
+
+****
+
+#### Exercises # 3.6
+###### **<font color="Green">Answer</font>**
+- <small>Created a module, create action class to `Unit3\CheckoutXMLPage\Controller\Checkout/Index` </small>
+- <small>Use `$this->pageFactory->create();` to render page template`</small>
+- <small>Create a layout `checkoutxmlpage_checkout_index` to render in default `checkout_index_index` with xml instructions</small>
+- <small>Check output at `/checkoutxmlpage/checkout/index` </small>
+
+<details><summary markdown="span"><font color="#f5deb3">Output is shown as below</font></summary>
+
+![]()
+</details>
+
 
