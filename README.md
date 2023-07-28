@@ -5,30 +5,35 @@
  <p align="center">Get dynamically generated GitHub stats on your READMEs!</p>
 </p>
   <p align="center">
-    <a href="https://github.com/anuraghazra/github-readme-stats/actions">
+    <a href="https://github.com/R-jee">
       <img alt="Tests Passing" src="https://github.com/anuraghazra/github-readme-stats/workflows/Test/badge.svg" />
     </a>
-    <a href="https://github.com/anuraghazra/github-readme-stats/graphs/contributors">
+    <a href="https://github.com/R-jee">
       <img alt="GitHub Contributors" src="https://img.shields.io/github/contributors/anuraghazra/github-readme-stats" />
     </a>
-    <a href="https://codecov.io/gh/anuraghazra/github-readme-stats">
+    <a href="https://github.com/R-jee">
       <img src="https://codecov.io/gh/anuraghazra/github-readme-stats/branch/master/graph/badge.svg" />
     </a>
-    <a href="https://github.com/anuraghazra/github-readme-stats/issues">
+    <a href="https://github.com/R-jee">
       <img alt="Issues" src="https://img.shields.io/github/issues/anuraghazra/github-readme-stats?color=0088ff" />
     </a>
-    <a href="https://github.com/anuraghazra/github-readme-stats/pulls">
+    <a href="https://github.com/R-jee">
       <img alt="GitHub pull requests" src="https://img.shields.io/github/issues-pr/anuraghazra/github-readme-stats?color=0088ff" />
     </a>
     <br />
     <br />
-    <a href="https://a.paddle.com/v2/click/16413/119403?link=1227">
+    <a href="https://github.com/R-jee">
       <img src="https://img.shields.io/badge/Supported%20by-VSCode%20Power%20User%20%E2%86%92-gray.svg?colorA=655BE1&colorB=4F44D6&style=for-the-badge"/>
     </a>
-    <a href="https://a.paddle.com/v2/click/16413/119403?link=2345">
+    <a href="https://github.com/R-jee">
       <img src="https://img.shields.io/badge/Supported%20by-Node%20Cli.com%20%E2%86%92-gray.svg?colorA=61c265&colorB=4CAF50&style=for-the-badge"/>
     </a>
   </p>
+
+Public Key: de686a15f9d741f7739c92c5eefa190d
+
+Private Key: f505c128e18d79b04e2921c253459942
+
 
 #### Commands to setup PHP and Nginx in Ubuntu
 ###### <small>Let’s quickly review this PHP and Nginx tutorial. These are all of the commands that we used to enable the fastCGI process manager for PHP in Nginx:</small>
@@ -271,6 +276,14 @@
 		-- Step 4 Error in ElasticSearch Solved by
 			- sudo apt-get --purge autoremove elasticsearch
 			- sudo rm -rf /etc/elasticsearch
+   		-- Step 6 remove overall elasticSearch
+			- sudo apt-get --purge autoremove elasticsearch
+   			- sudo apt-get remove --purge elasticsearch
+      			- sudo rm -rf /etc/elasticsearch
+			- sudo rm -rf /var/lib/elasticsearch
+   			- sudo apt-get install elasticsearch=7.10.1
+			- sudo systemctl start elasticsearch
+			- curl http://localhost:9200/
 			
 ##	8): Install Magento 2
 		--0 /home/eg-umair/.config/composer/auth.json  accessKey stored address
@@ -617,3 +630,35 @@
     - `usermod -aG sudo testuser`
 			
 			
+
+
+
+
+# ![](https://th.bing.com/th?id=ODLS.194d04fb-feff-41d9-b83c-1cbe98afa6ec&w=32&h=32&o=6&pid=13.1) **<font color=""> Magento Training Exercises</font>**
+>### **<font color="#4267b2"> Chapter # 3 Exercises</font>**
+
+#### Exercises # 3.1
+###### **<font color="Green">Answer</font>**
+- <small>Created a module, create action class to `Unit3\HelloWorldBlock\Controller\Block\TextBlock` </small>
+- <small>Use `getLayout()->createBlock` to instantiate block</small>
+- <small>Return raw text with `$result->setContents($block->toHtml())` </small>
+- <small>Check output at `/helloworldblock/block/blocktext` </small>
+
+<details><summary markdown="span"><font color="#f5deb3">Output is shown as below</font></summary>
+
+![](https://github.com/R-jee/Magento2-Helping-Guide/blob/main/Screenshot%20from%202023-07-11%2020-28-30.png?raw=true)
+</details>
+
+****
+
+#### Exercises # 3.2
+###### **<font color="Green">Answer</font>**
+- <small>Created a module, create action class to `Unit3\HelloWorldBlockTemplate\Controller\Block\BlockWithTemplateFile` </small>
+- <small>Use `$_block->setTemplate('blocktemplatefile.phtml')` to assign block template`</small>
+- <small>Return result html of block with `$result->setContents($block->toHtml())` </small>
+- <small>Check output at `/helloworldblocktemplate/block/blockwithtemplatefile` </small>
+
+<details><summary markdown="span"><font color="#f5deb3">Output is shown as below</font></summary>
+
+![](https://sat02pap001files.storage.live.com/y4mO_XQDw30mE9by3UEQpHlxX4E7I7cAimjn7mTNYJ2HiymSEighwuvG3SjfZjMh2A9yI6AhenTRxnXdmshN8p00aS8LUfiFBbSWz2Ok45P_-cRvXnbUCdZh0iqAErCrbbFwJy9fWu2p17-hsPHbZRnN44fH98D0RnxbkKWIHYp_U7L4mpoZNo-XRMlgIi2oKK3?encodeFailures=1&width=1175&height=927)
+</details>
