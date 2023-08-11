@@ -35,6 +35,13 @@ Public Key: de686a15f9d741f7739c92c5eefa190d
 Private Key: f505c128e18d79b04e2921c253459942
 
 
+#### **Remove Sudo Permission**
+* Change in /etc/nginx/nginx.conf
+* sudo chown -R $USER:$USER .
+* sudo chmod -R 777 /run/php/php8.1-fpm.sock
+* sudo chmod -R 777 app/ generated/ pub/ var/
+
+
 #### Commands to setup PHP and Nginx in Ubuntu
 ###### <small>Let’s quickly review this PHP and Nginx tutorial. These are all of the commands that we used to enable the fastCGI process manager for PHP in Nginx:</small>
 * `sudo apt-get update -y`
